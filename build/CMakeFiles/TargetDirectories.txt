@@ -1,0 +1,3 @@
+/data/data/com.termux/files/home/cpp/to_bpp/build/CMakeFiles/rebuild_cache.dir
+/data/data/com.termux/files/home/cpp/to_bpp/build/CMakeFiles/edit_cache.dir
+/data/data/com.termux/files/home/cpp/to_bpp/build/CMakeFiles/TESTER.dir

@@ -1,0 +1,1 @@
+/data/data/com.termux/files/usr/bin/c++     CMakeFiles/TESTER.dir/To_bpp.cpp.o  -o TESTER 
