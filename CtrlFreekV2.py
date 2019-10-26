@@ -127,8 +127,8 @@ def compileCpp(projectLocation):
         if exists("build/"):
             print("deleting build")
             rmtree("build/")
-        call(["cmake -B build -D CMAKE_CXX_COMPILER=/Volumes/MESA-USB/compile/macCompile/g++ -D CMAKE_CC_COMPILER=/Volumes/MESA-USB/compile/macCompile/gcc"], shell=True)
-        call(["cmake --build build -- -j3"], shell=True)
+        call(["cmake -B bin"], cwd=projectLocation)
+        call(["cmake --build bin --config Release"], cwd=projectLocation)
         print("Build Complete")
     else:
         print("\n", "Cannont format, Unknown System", "\n")
@@ -163,14 +163,13 @@ headerLabel = ttk.Label(root, text=a, justify = tk.LEFT, style="Fixed.TLabel").p
 radio1 = tk.Radiobutton(root, text="Java run", variable=v, value=1).pack()
 radio2 = tk.Radiobutton(root, text="Java .jar", variable=v, value=2).pack()
 radio3 = tk.Radiobutton(root, text="C++", variable=v, value=3).pack()
-root.directory = "Project Path Not Selected"
+newDirectory = tk.StringVar()
+newDirectory.set("Select Project Folder")
+directoryLabel = ttk.Label(root, textvariable=newDirectory, justify = tk.CENTER, style="Fixed.TLabel").pack()
 
 def askForDirectory():
-    root.directory = filedialog.askdirectory()
-    directoryLabel['text'] = root.directory
+    newDirectory.set(filedialog.askdirectory())
 
 directoryButton = tk.Button(root, text="Select Project", justify = tk.CENTER, padx = 20, pady = 20, command=askForDirectory).pack()
-directoryLabel = ttk.Label(root, text=root.directory, justify = tk.CENTER, style="Fixed.TLabel").pack()
-compileButton = tk.Button(root, text="Compile", justify = tk.CENTER, padx = 20, pady = 20, command= lambda: compile(root.directory)).pack()
-
+compileButton = tk.Button(root, text="Compile", justify = tk.CENTER, padx = 20, pady = 20, command= lambda: compile(newDirectory)).pack()
 root.mainloop()

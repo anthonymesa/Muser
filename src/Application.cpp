@@ -21,7 +21,7 @@
 #include <fstream>
 #include <stdexcept>
 #include <string>
-#include <windows.h>
+//#include <windows.h>
 
 screenDimensions screen_dimensions;
 GLuint VBO;
