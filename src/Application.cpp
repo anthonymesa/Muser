@@ -11,7 +11,8 @@
 #define STB_IMAGE_IMPLEMENTATION
 
 #include <stb_image/stb_image.h>
-#include <GL/glew.h>
+//#include <GL/glew.h>
+#include <OpenGL/GL.h>
 #include <GLFW/glfw3.h>
 #include <math_3d/math_3d.h>
 #include <RenderMuser.h>
@@ -57,7 +58,7 @@ GLFWwindow* showSplash()
 	GLFWwindow* splashWindow = glfwCreateWindow(1000, 341, "Muser loading...", NULL, NULL);
 	glfwMakeContextCurrent(splashWindow);
 
-	glewInit();
+	//glewInit();
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
