@@ -117,18 +117,24 @@ def createJar():
 # for compiling c++
 def compileCpp(projectLocation):
     if platform.system() == "Windows":
-        if exists("build/"):
+        if exists(projectLocation + "/build"):
             print("deleting build")
-            rmtree("build/")
+            rmtree(projectLocation + "/build")
+        if exists(projectLocation + "/bin"):
+            print("deleting bin")
+            rmtree(projectLocation + "/bin")
         call(["D:/compile/winCompile/cmake-3.16.0-rc2-win64-x64/bin/cmake.exe", "-B", "bin", "-G", "Visual Studio 16 2019"], cwd=projectLocation)
         call(["D:/compile/winCompile/cmake-3.16.0-rc2-win64-x64/bin/cmake.exe", "--build", "bin", "--config", "Release"], cwd=projectLocation)
         print("Build Complete")
     elif platform.system() == "Darwin":
-        if exists("build/"):
+        if exists(projectLocation + "/build"):
             print("deleting build")
-            rmtree("build/")
-        call(["cmake -B bin"], cwd=projectLocation)
-        call(["cmake --build bin --config Release"], cwd=projectLocation)
+            rmtree(projectLocation + "/build")
+        if exists(projectLocation + "/bin"):
+            print("deleting bin")
+            rmtree(projectLocation + "/bin")
+        call(["cmake", "-B", "bin", "-G", "Xcode"], cwd=projectLocation)
+        call(["cmake", "--build", "bin", "--config", "Release"], cwd=projectLocation)
         print("Build Complete")
     else:
         print("\n", "Cannont format, Unknown System", "\n")
@@ -171,5 +177,5 @@ def askForDirectory():
     newDirectory.set(filedialog.askdirectory())
 
 directoryButton = tk.Button(root, text="Select Project", justify = tk.CENTER, padx = 20, pady = 20, command=askForDirectory).pack()
-compileButton = tk.Button(root, text="Compile", justify = tk.CENTER, padx = 20, pady = 20, command= lambda: compile(newDirectory)).pack()
+compileButton = tk.Button(root, text="Compile", justify = tk.CENTER, padx = 20, pady = 20, command= lambda: compile(newDirectory.get())).pack()
 root.mainloop()

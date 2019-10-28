@@ -1,1 +1,0 @@
-/Library/Developer/CommandLineTools/usr/bin/c++   -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/Muser.dir/src/application.cpp.o  -o ../build/mac/Muser  ../lib/GL/glew32s.lib ../lib/GLFW/glfw-3.3.bin.MACOS/lib-macos/libglfw3.a 
