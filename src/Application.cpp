@@ -92,10 +92,10 @@ GLFWwindow* showSplash()
 
 void loadBaseMuserData(const std::string &input)
 {
-	// opens base.mu
+	// Declare file object defaultMuser from input
 	std::ifstream defaultMuser(input);
 
-	// if base.mus doesnt exist, generate a new one
+	// If base.mus doesnt exist, generate a new one
 	if (!defaultMuser.good()) {
 		try
 		{
@@ -108,22 +108,28 @@ void loadBaseMuserData(const std::string &input)
 		}
 	}
 
-	std::string defaultMuserLine;
 	float x, y, z, u, v;
-	std::vector<museVertTexDataLine> baseMuserData;
-	museVertTexDataLine baseMuserStruct;
 
-	// reads each line in base.mus
+	// String to hold the info read from the muser object
+	std::string defaultMuserLine;
+	// Declare struct of vertexes and uvs
+	muserVertexDataLine baseMuserStruct;
+	// Declare array of structs
+	std::vector<museVertTexDataLine> baseMuserData;
+
+	// reads each line in loaded file object 'defaultMuser'
 	while (getline(defaultMuser, defaultMuserLine)) {
 
-		// for current line of base.mus, split line into strings and put them in array
+		// Split current line defaultMuserLine into declared array of strings
 		std::vector<std::string> loadedData = split(defaultMuserLine, ' ');
+
 		// apply values from line array into x, y, and z
 		x = (float)atof(loadedData[0].c_str());
 		y = (float)atof(loadedData[1].c_str());
 		z = (float)atof(loadedData[2].c_str());
 
 		std::tuple<float, float, float> baseMusVertecies;
+
 		// apply valuse of x, y, and z to a tuple
 		baseMusVertecies = std::make_tuple(x, y, z);
 
@@ -132,13 +138,15 @@ void loadBaseMuserData(const std::string &input)
 		v = (float)atof(loadedData[4].c_str());
 
 		std::tuple<float, float> baseMusUvs;
+
 		// apply valuse of u and v to a tuple
 		baseMusUvs = std::make_tuple(u, v);
 
 		// apply tuples to both elements in museVertTexDataLine struct
 		baseMuserStruct.vertex = baseMusVertecies;
 		baseMuserStruct.uv = baseMusUvs;
-		// apply struct to an array of structs
+
+		// add struct baseMuserStruct to baseMuserData array of vertex[3]uv[2] structs
 		baseMuserData.push_back(baseMuserStruct);
 	}
 
