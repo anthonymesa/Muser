@@ -113,7 +113,7 @@ void loadBaseMuserData(const std::string &input)
 	// String to hold the info read from the muser object
 	std::string defaultMuserLine;
 	// Declare struct of vertexes and uvs
-	muserVertexDataLine baseMuserStruct;
+	museVertTexDataLine baseMuserStruct;
 	// Declare array of structs
 	std::vector<museVertTexDataLine> baseMuserData;
 
