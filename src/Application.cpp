@@ -7,6 +7,7 @@
  *  Date: 09/25/19
  *
  */
+
 #define GLEW_STATIC
 #define STB_IMAGE_IMPLEMENTATION
 
@@ -16,7 +17,8 @@
 #include <GLFW/glfw3.h>
 #include <math_3d/math_3d.h>
 #include <RenderMuser.h>
-#include <ObjParser.h>
+#include <Muse.h>
+#include <Application.h>
 
 #include <iostream>
 #include <fstream>
@@ -90,68 +92,6 @@ GLFWwindow* showSplash()
 	return splashWindow;
 }
 
-void loadBaseMuserData(const std::string &input)
-{
-	// Declare file object defaultMuser from input
-	std::ifstream defaultMuser(input);
-
-	// If base.mus doesnt exist, generate a new one
-	if (!defaultMuser.good()) {
-		try
-		{
-			parseObj("res/muserBase.obj");
-			std::ifstream defaultMuser(input);
-		}
-		catch (std::exception& exeption)
-		{
-			std::cout << exeption.what() << std::endl;
-		}
-	}
-
-	float x, y, z, u, v;
-
-	// String to hold the info read from the muser object
-	std::string defaultMuserLine;
-	// Declare struct of vertexes and uvs
-	museVertTexDataLine baseMuserStruct;
-	// Declare array of structs
-	std::vector<museVertTexDataLine> baseMuserData;
-
-	// reads each line in loaded file object 'defaultMuser'
-	while (getline(defaultMuser, defaultMuserLine)) {
-
-		// Split current line defaultMuserLine into declared array of strings
-		std::vector<std::string> loadedData = split(defaultMuserLine, ' ');
-
-		// apply values from line array into x, y, and z
-		x = (float)atof(loadedData[0].c_str());
-		y = (float)atof(loadedData[1].c_str());
-		z = (float)atof(loadedData[2].c_str());
-
-		std::tuple<float, float, float> baseMusVertecies;
-
-		// apply valuse of x, y, and z to a tuple
-		baseMusVertecies = std::make_tuple(x, y, z);
-
-		// apply values from line array into u and v
-		u = (float)atof(loadedData[3].c_str());
-		v = (float)atof(loadedData[4].c_str());
-
-		std::tuple<float, float> baseMusUvs;
-
-		// apply valuse of u and v to a tuple
-		baseMusUvs = std::make_tuple(u, v);
-
-		// apply tuples to both elements in museVertTexDataLine struct
-		baseMuserStruct.vertex = baseMusVertecies;
-		baseMuserStruct.uv = baseMusUvs;
-
-		// add struct baseMuserStruct to baseMuserData array of vertex[3]uv[2] structs
-		baseMuserData.push_back(baseMuserStruct);
-	}
-
-}
-
 /*
  	Main function
  	Initializes GLFW and runs splash window, then runs main window.
@@ -168,9 +108,6 @@ int main(void)
 	// Initialize and display a new glfw window ShowSplash
 	GLFWwindow* splashWindow = showSplash();
 
-	// loads vertex data from base.mus
-	loadBaseMuserData("res/base.mus");
-
 	// close and destroy the splash window
 	glfwSetWindowShouldClose(splashWindow, GLFW_TRUE);
 	glfwDestroyWindow(splashWindow);
@@ -186,6 +123,10 @@ int main(void)
 	}
 
 	glfwMakeContextCurrent(mainWindow);
+
+	std::string spectrogramName = "test";
+	Muse firstObject;
+	firstObject.renderToSpectrogram(spectrogramName);
 
 	while (!glfwWindowShouldClose(mainWindow))
 	{
