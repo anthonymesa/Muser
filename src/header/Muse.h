@@ -14,6 +14,8 @@
 #include <fstream>
 #include <unordered_map>
 
+#define SPEC_SZ 9999
+
 class Muse
 {
 
@@ -25,8 +27,8 @@ class Muse
         };
 
         std::vector<vertexUvPair> baseMuserData;
-        int spectrogramBase[999999][999999] = {0};
-        int spectrogram[999999][999999];
+        //int spectrogramBase[999999][999999] = {0};
+        unsigned char spectrogram[SPEC_SZ][SPEC_SZ];
         int arrayX, arrayY;
 
         std::vector<std::string> split(std::string input, char splitter)
@@ -211,16 +213,18 @@ class Muse
 
         void renderToSpectrogram(std::string &nameOfFile)
         {
-            for (int i = 0; i < baseMuserData.size(); i++){
-                arrayX = int ((std::get<0>(baseMuserData[i].uv)) * 100000);
-                arrayY = int ((std::get<1>(baseMuserData[i].uv)) * 100000);
-                spectrogram[arrayX][arrayY] = (float (int (pow((pow((std::get<0>(baseMuserData[i].vertex) - 0), 2) + pow((std::get<1>(baseMuserData[i].vertex) - 0), 2) + pow((std::get<2>(baseMuserData[i].vertex) - 0), 2)), .5) * 10 + 0.5)) / 10);
-            }
-
-            std::ofstream spectrogramImage(nameOfFile + ".ppm");
+            std::ofstream spectrogramImage;
             
+            for (int i = 0; i < baseMuserData.size(); i++){
+                arrayX = int ((std::get<0>(baseMuserData[i].uv)) * 100000)/1000;
+                arrayY = int ((std::get<1>(baseMuserData[i].uv)) * 100000)/1000;
+                spectrogram[arrayX][arrayY] = ((std::get<0>(baseMuserData[i].vertex + std::get<1>(baseMuserData[i].vertex + std::get<2>(baseMuserData[i].vertex)/3) * 255;
+                //spectrogram[arrayX][arrayY] = (float (int (pow((pow((std::get<0>(baseMuserData[i].vertex) - 0), 2) + pow((std::get<1>(baseMuserData[i].vertex) - 0), 2) + pow((std::get<2>(baseMuserData[i].vertex) - 0), 2)), .5) * 10 + 0.5)) / 10);
+            }
+            
+            spectrogramImage.open(nameOfFile + ".ppm");
             spectrogramImage << "P3\n";
-            spectrogramImage << "999999 999999\n";
+            spectrogramImage << "9999 9999\n";
             spectrogramImage << "255";
 
             for (int i = 0; i < sizeof(spectrogram)/sizeof(spectrogram[0]); i++){

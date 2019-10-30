@@ -23,8 +23,8 @@
             "macFrameworkPath": ["/System/Library/Frameworks"],
             "includePath": [
                 "${workspaceFolder}/**",
-                "${workspaceFolder}/include",
-                "${workspaceFolder}/src/header"
+                "${workspaceFolder}/include/*",
+                "${workspaceFolder}/src/header/*"
             ],
             "defines": [
                 "_DEBUG",
