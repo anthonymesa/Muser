@@ -213,16 +213,15 @@ class Muse
 
         void renderToSpectrogram(std::string &nameOfFile)
         {
-            std::ofstream spectrogramImage;
+            std::ofstream spectrogramImage(nameOfFile + ".ppm");
             
             for (int i = 0; i < baseMuserData.size(); i++){
                 arrayX = int ((std::get<0>(baseMuserData[i].uv)) * 100000)/1000;
                 arrayY = int ((std::get<1>(baseMuserData[i].uv)) * 100000)/1000;
-                spectrogram[arrayX][arrayY] = ((std::get<0>(baseMuserData[i].vertex + std::get<1>(baseMuserData[i].vertex + std::get<2>(baseMuserData[i].vertex)/3) * 255;
+                spectrogram[arrayX][arrayY] = char ((std::get<0>(baseMuserData[i].vertex) + std::get<1>(baseMuserData[i].vertex) + std::get<2>(baseMuserData[i].vertex))/3) * 255;
                 //spectrogram[arrayX][arrayY] = (float (int (pow((pow((std::get<0>(baseMuserData[i].vertex) - 0), 2) + pow((std::get<1>(baseMuserData[i].vertex) - 0), 2) + pow((std::get<2>(baseMuserData[i].vertex) - 0), 2)), .5) * 10 + 0.5)) / 10);
             }
-            
-            spectrogramImage.open(nameOfFile + ".ppm");
+
             spectrogramImage << "P3\n";
             spectrogramImage << "9999 9999\n";
             spectrogramImage << "255";
