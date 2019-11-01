@@ -22,13 +22,14 @@ if(WIN32)
 
     add_executable(Muser ${SRC_FILES} ${LIBRARY_H_FILES} ${PROJECT_H_FILES} ${RESOURCE_FILES})
 
-    target_link_libraries(Muser ${CMAKE_SOURCE_DIR}/lib/GL/glew32s.lib)
-    target_link_libraries(Muser ${CMAKE_SOURCE_DIR}/lib/GLFW/glfw-3.3.bin.WIN64/lib-vc2019/glfw3.lib)
+    target_link_libraries(Muser "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/SDK/ScopeCppSDK/SDK/lib/OpenGL32.Lib")
+    target_link_libraries(Muser ${CMAKE_SOURCE_DIR}/lib/GL/Win64/glew32s.lib)
+    target_link_libraries(Muser ${CMAKE_SOURCE_DIR}/lib/GLFW/Win64/lib-vc2019/glfw3.lib)
 endif()
 
 if(UNIX)
 	
-    set(CMAKE_BINARY_DIR ${CMAKE_SOURCE_DIR}/bin/Mac)
+    set(CMAKE_BINARY_DIR ${CMAKE_SOURCE_DIR}/bin/mac)
     set(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/build/mac)
 
     file(GLOB_RECURSE SRC_FILES ${SOURCE_DIRECTORY}/*.cpp)
@@ -46,6 +47,6 @@ if(UNIX)
     find_library(OPENGL OpenGl)
 
     target_link_libraries(Muser ${CORE_FOUNDATION} ${CORE_GRAPHICS} ${CORE_VIDEO} ${IOKIT} ${APP_KIT} ${OPENGL})
-    target_link_libraries(Muser ${LIB_DIRECTORY}/GL/glew32s.lib)
-    target_link_libraries(Muser ${LIB_DIRECTORY}/GLFW/glfw-3.3.bin.MACOS/lib-macos/libglfw3.a)
+    target_link_libraries(Muser ${LIB_DIRECTORY}/GL/Mac/glew32s.lib)
+    target_link_libraries(Muser ${LIB_DIRECTORY}/GLFW/Mac/lib-macos/libglfw3.a)
 endif()

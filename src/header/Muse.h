@@ -27,9 +27,11 @@ class Muse
         };
 
         std::vector<vertexUvPair> baseMuserData;
-        //int spectrogramBase[999999][999999] = {0};
-        unsigned char spectrogram[SPEC_SZ][SPEC_SZ];
-        int arrayX, arrayY;
+        
+		unsigned char* spectrogram = new unsigned char[SPEC_SZ];
+		unsigned char* spectrogramRow = new unsigned char[SPEC_SZ];
+        
+		int arrayX, arrayY;
 
         std::vector<std::string> split(std::string input, char splitter)
         {
@@ -119,11 +121,13 @@ class Muse
                 }
             }
 
+            muse.close();
+
             // sets variable to display the amount of vertex/uv's processed in file
             int mapCount = distance(pointerMap.begin(), pointerMap.end());
 
             std::ofstream muserBase;
-            muserBase.open("res/base.mus");
+            muserBase.open("base.mus");
 
             // for each element in the verticies array, using the pointer map, find the corresponding element from the uvs array,
             // and set both objects to variables that are then passed to museVertTexDataLine
@@ -154,7 +158,7 @@ class Muse
             if (!defaultMuser.good()) {
                 try
                 {
-                    parseObj("res/muserBase.obj");
+                    parseObj("muserBase.obj");
                     std::ifstream defaultMuser(input);
                 }
                 catch (std::exception& exeption)
@@ -202,23 +206,26 @@ class Muse
                 // add struct baseMuserStruct to baseMuserData array of vertex[3]uv[2] structs
                 baseMuserData.push_back(baseMuserStruct);
             }
+
+            defaultMuser.close();
         }
 
     public:
 
         Muse()
         {
-            loadBaseMuserData("res/base.mus");
+            loadBaseMuserData("base.mus");
         }
 
         void renderToSpectrogram(std::string &nameOfFile)
         {
             std::ofstream spectrogramImage(nameOfFile + ".ppm");
-            
+
             for (int i = 0; i < baseMuserData.size(); i++){
                 arrayX = int ((std::get<0>(baseMuserData[i].uv)) * 100000)/1000;
                 arrayY = int ((std::get<1>(baseMuserData[i].uv)) * 100000)/1000;
-                spectrogram[arrayX][arrayY] = char ((std::get<0>(baseMuserData[i].vertex) + std::get<1>(baseMuserData[i].vertex) + std::get<2>(baseMuserData[i].vertex))/3) * 255;
+
+                (*spectrogram)[arrayX][arrayY] = char ((std::get<0>(baseMuserData[i].vertex) + std::get<1>(baseMuserData[i].vertex) + std::get<2>(baseMuserData[i].vertex))/3) * 255;
                 //spectrogram[arrayX][arrayY] = (float (int (pow((pow((std::get<0>(baseMuserData[i].vertex) - 0), 2) + pow((std::get<1>(baseMuserData[i].vertex) - 0), 2) + pow((std::get<2>(baseMuserData[i].vertex) - 0), 2)), .5) * 10 + 0.5)) / 10);
             }
 
@@ -226,10 +233,16 @@ class Muse
             spectrogramImage << "9999 9999\n";
             spectrogramImage << "255";
 
-            for (int i = 0; i < sizeof(spectrogram)/sizeof(spectrogram[0]); i++){
-                for (int j = 0; j < sizeof(spectrogram[0])/sizeof(int); j++){
-                    spectrogramImage << spectrogram[i][j] << " ";
+            for (int i = 0; i < sizeof(*spectrogram)/sizeof((*spectrogram)[0]); i++){
+                for (int j = 0; j < sizeof((*spectrogram)[0])/sizeof(int); j++){
+                    spectrogramImage << (*spectrogram)[i][j] << " ";
                 }
             }
+
+            spectrogramImage.close();
         }
+
+		~Muse() {
+
+		}
 };

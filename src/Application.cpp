@@ -11,11 +11,15 @@
 #define GLEW_STATIC
 #define STB_IMAGE_IMPLEMENTATION
 
+#include <windows.h>
 #include <stb_image/stb_image.h>
-//#include <GL/glew.h>
-#include <OpenGL/GL.h>
+#include <GL/glew.h>
+#include <GL/gl.h>
+#include <GL/glu.h>
+//#include <OpenGL/GL.h>
 #include <GLFW/glfw3.h>
 #include <math_3d/math_3d.h>
+
 #include <RenderMuser.h>
 #include <Muse.h>
 #include <Application.h>
@@ -24,7 +28,6 @@
 #include <fstream>
 #include <stdexcept>
 #include <string>
-//#include <windows.h>
 
 screenDimensions screen_dimensions;
 GLuint VBO;
@@ -33,7 +36,7 @@ GLuint loadSplashImage()
 {
 	int textureWidth, textureHeight, bpp;
 	GLuint id;
-	unsigned char* image = stbi_load("../res/muserbanner.jpg", &textureWidth, &textureHeight, &bpp, STBI_rgb_alpha);
+	unsigned char* image = stbi_load("muserbanner.jpg", &textureWidth, &textureHeight, &bpp, STBI_rgb_alpha);
 
 	glEnable(GL_TEXTURE_2D);
 	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
@@ -98,6 +101,14 @@ GLFWwindow* showSplash()
  */
 int main(void)
 {
+	GLenum err = glewInit();
+	if (GLEW_OK != err)
+	{
+		/* Problem: glewInit failed, something is seriously wrong. */
+		fprintf(stderr, "Error: %s\n", glewGetErrorString(err));
+	}
+	fprintf(stdout, "Status: Using GLEW %s\n", glewGetString(GLEW_VERSION));
+
 	if (!glfwInit())
 		return -1;
 
