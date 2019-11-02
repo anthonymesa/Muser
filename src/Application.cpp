@@ -11,12 +11,12 @@
 #define GLEW_STATIC
 #define STB_IMAGE_IMPLEMENTATION
 
-#include <windows.h>
+//#include <windows.h>
 #include <stb_image/stb_image.h>
 #include <GL/glew.h>
-#include <GL/gl.h>
-#include <GL/glu.h>
-//#include <OpenGL/GL.h>
+//#include <GL/gl.h>
+//#include <GL/glu.h>
+#include <OpenGL/GL.h>
 #include <GLFW/glfw3.h>
 #include <math_3d/math_3d.h>
 

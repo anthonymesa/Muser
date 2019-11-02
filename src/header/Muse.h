@@ -14,12 +14,13 @@
 #include <fstream>
 #include <unordered_map>
 
-#define SPEC_SZ 9999
-
 class Muse
 {
 
     private:
+
+        int spectrogram_size = 9999;
+
         struct vertexUvPair
         {
             std::tuple<float, float, float> vertex;
@@ -28,8 +29,7 @@ class Muse
 
         std::vector<vertexUvPair> baseMuserData;
         
-		unsigned char* spectrogram = new unsigned char[SPEC_SZ];
-		unsigned char* spectrogramRow = new unsigned char[SPEC_SZ];
+		unsigned char** spectrogram;
         
 		int arrayX, arrayY;
 
@@ -219,23 +219,27 @@ class Muse
 
         void renderToSpectrogram(std::string &nameOfFile)
         {
+            *spectrogram = new unsigned char*[spectrogram_size];
+            for (int i = 0; i < spectrogram_size; i++){
+                *(spectrogram + i) = new unsigned char[spectrogram_size];
+            }
+
             std::ofstream spectrogramImage(nameOfFile + ".ppm");
 
             for (int i = 0; i < baseMuserData.size(); i++){
                 arrayX = int ((std::get<0>(baseMuserData[i].uv)) * 100000)/1000;
                 arrayY = int ((std::get<1>(baseMuserData[i].uv)) * 100000)/1000;
 
-                (*spectrogram)[arrayX][arrayY] = char ((std::get<0>(baseMuserData[i].vertex) + std::get<1>(baseMuserData[i].vertex) + std::get<2>(baseMuserData[i].vertex))/3) * 255;
-                //spectrogram[arrayX][arrayY] = (float (int (pow((pow((std::get<0>(baseMuserData[i].vertex) - 0), 2) + pow((std::get<1>(baseMuserData[i].vertex) - 0), 2) + pow((std::get<2>(baseMuserData[i].vertex) - 0), 2)), .5) * 10 + 0.5)) / 10);
+                *((*spectrogram) + arrayY)[arrayX] = char ((std::get<0>(baseMuserData[i].vertex) + std::get<1>(baseMuserData[i].vertex) + std::get<2>(baseMuserData[i].vertex))/3) * 255;
             }
 
             spectrogramImage << "P3\n";
             spectrogramImage << "9999 9999\n";
             spectrogramImage << "255";
 
-            for (int i = 0; i < sizeof(*spectrogram)/sizeof((*spectrogram)[0]); i++){
-                for (int j = 0; j < sizeof((*spectrogram)[0])/sizeof(int); j++){
-                    spectrogramImage << (*spectrogram)[i][j] << " ";
+            for (int i = 0; i < spectrogram_size; i++){
+                for (int j = 0; j < spectrogram_size; j++){
+                    spectrogramImage << *((*spectrogram) + i)[j] << " ";
                 }
             }
 
