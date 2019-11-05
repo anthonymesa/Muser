@@ -11,12 +11,19 @@
 #define GLEW_STATIC
 #define STB_IMAGE_IMPLEMENTATION
 
-//#include <windows.h>
+#ifdef __APPLE__
+	#include <OpenGL/GL.h>
+
+#elif defined _WIN32 || defined _WIN64
+	#include <windows.h>
+	#include <GL/glew.h>
+	#include <GL/gl.h>
+	#include <GL/glu.h>
+
+#else
+#endif
+
 #include <stb_image/stb_image.h>
-#include <GL/glew.h>
-//#include <GL/gl.h>
-//#include <GL/glu.h>
-#include <OpenGL/GL.h>
 #include <GLFW/glfw3.h>
 #include <math_3d/math_3d.h>
 
@@ -62,8 +69,19 @@ GLFWwindow* showSplash()
 	glfwWindowHint(GLFW_DECORATED, GLFW_FALSE);
 	GLFWwindow* splashWindow = glfwCreateWindow(1000, 341, "Muser loading...", NULL, NULL);
 	glfwMakeContextCurrent(splashWindow);
+	
+	// If Windows, initialize GLEW.
+	#ifdef _WIN32
+		
+		GLenum err = glewInit();
+		if (GLEW_OK != err)
+		{
+			/* Problem: glewInit failed, something is seriously wrong. */
+			fprintf(stderr, "Error: %s\n", glewGetErrorString(err));
+		}
+		fprintf(stdout, "Status: Using GLEW %s\n", glewGetString(GLEW_VERSION));
 
-	//glewInit();
+	#endif
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -101,14 +119,6 @@ GLFWwindow* showSplash()
  */
 int main(void)
 {
-	GLenum err = glewInit();
-	if (GLEW_OK != err)
-	{
-		/* Problem: glewInit failed, something is seriously wrong. */
-		fprintf(stderr, "Error: %s\n", glewGetErrorString(err));
-	}
-	fprintf(stdout, "Status: Using GLEW %s\n", glewGetString(GLEW_VERSION));
-
 	if (!glfwInit())
 		return -1;
 
