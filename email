@@ -35,3 +35,7 @@ class Something
             }
         }
 }
+
+        MACOSX_FRAMEWORK_IDENTIFIER net.bisektor.Muser
+        MACOSX_FRAMEWORK_INFO_PLIST Info.plist
+        RESOURCE "${RESOURCE_FILES}"

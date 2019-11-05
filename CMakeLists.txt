@@ -35,7 +35,7 @@ if(UNIX)
     file(GLOB_RECURSE SRC_FILES ${SOURCE_DIRECTORY}/*.cpp)
     file(GLOB_RECURSE PROJECT_H_FILES ${SOURCE_DIRECTORY}/*.h)
     file(GLOB_RECURSE LIBRARY_H_FILES ${LIB_INCLUDE_DIR}/*.h)
-    file(GLOB_RECURSE RESOURCE_FILES ${SOURCE_DIRECTORY}/res/*)
+    file(GLOB_RECURSE RESOURCE_FILES ${SOURCE_DIRECTORY}/res/base.mus)
 
     add_executable(Muser ${SRC_FILES} ${LIBRARY_H_FILES} ${PROJECT_H_FILES} ${RESOURCE_FILES})
 
@@ -49,4 +49,12 @@ if(UNIX)
     target_link_libraries(Muser ${CORE_FOUNDATION} ${CORE_GRAPHICS} ${CORE_VIDEO} ${IOKIT} ${APP_KIT} ${OPENGL})
     target_link_libraries(Muser ${LIB_DIRECTORY}/GL/Mac/glew32s.lib)
     target_link_libraries(Muser ${LIB_DIRECTORY}/GLFW/Mac/lib-macos/libglfw3.a)
-endif()
+
+    set_target_properties(Muser PROPERTIES
+        MACOSX_BUNDLE TRUE
+        MACOSX_FRAMEWORK_IDENTIFIER net.bisektor.Muser
+        MACOSX_FRAMEWORK_INFO_PLIST Info.plist
+        RESOURCE "${RESOURCE_FILES}"
+    )
+    
+    endif()
