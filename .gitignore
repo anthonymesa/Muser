@@ -1,0 +1,8 @@
+/bin/
+
+/build/
+
+/old/
+
+*.DS_STORE
+
