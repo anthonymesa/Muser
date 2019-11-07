@@ -7,3 +7,5 @@ old/
 *.DS_STORE
 
 .vscode/
+
+lib/
