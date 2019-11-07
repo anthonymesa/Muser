@@ -1,5 +1,0 @@
-/Users/anthonymesa/Desktop/muser-build/bin/mac/CMakeFiles/install.dir
-/Users/anthonymesa/Desktop/muser-build/bin/mac/CMakeFiles/package.dir
-/Users/anthonymesa/Desktop/muser-build/bin/mac/CMakeFiles/Muser.dir
-/Users/anthonymesa/Desktop/muser-build/bin/mac/CMakeFiles/ALL_BUILD.dir
-/Users/anthonymesa/Desktop/muser-build/bin/mac/CMakeFiles/ZERO_CHECK.dir
