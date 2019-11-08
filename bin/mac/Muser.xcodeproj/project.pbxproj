@@ -7,290 +7,249 @@
 	objects = {
 
 /* Begin PBXAggregateTarget section */
-		672496426C7B443EA882F24B /* ALL_BUILD */ = {
+		471E19769A2B4248A0428B13 /* ALL_BUILD */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = 85165672EF1B482E84B23BBE /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */;
+			buildConfigurationList = 3E7121438D2C4C029A50F8F1 /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */;
 			buildPhases = (
-				0BFDD44BD354495591C4D3FA /* CMake Rules */,
+				7EFC5DDF192F4B68A229B396 /* CMake Rules */,
 			);
 			dependencies = (
-				E1BD95A69B8B466F822F0B1F /* PBXTargetDependency */,
-				F0CA999AFC9A4DB1B89CF4C1 /* PBXTargetDependency */,
+				BBDB376E0A634B0FACA3B008 /* PBXTargetDependency */,
+				F0ACB154B779404C93A6993C /* PBXTargetDependency */,
 			);
 			name = ALL_BUILD;
 			productName = ALL_BUILD;
 		};
-		72236D4763FB41AC82E302CC /* ZERO_CHECK */ = {
+		BDC8359308D94F4F9484BE62 /* ZERO_CHECK */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = 198BADF688F9468FA5AD526D /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */;
+			buildConfigurationList = 9724048040B548D784420316 /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */;
 			buildPhases = (
-				B20A7DFEF6C44009864FF7DB /* CMake Rules */,
+				47BA76C8CEAA464CB2EDE310 /* CMake Rules */,
 			);
 			dependencies = (
 			);
 			name = ZERO_CHECK;
 			productName = ZERO_CHECK;
 		};
-		A8731364C763460B86EEE8E5 /* install */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = 54E7ECC0568D4121B90BF7C1 /* Build configuration list for PBXAggregateTarget "install" */;
-			buildPhases = (
-				6CE69CB64EBC4FFF9F608C4B /* CMake PostBuild Rules */,
-			);
-			dependencies = (
-				394410EA7EED40B9B08FB971 /* PBXTargetDependency */,
-			);
-			name = install;
-			productName = install;
-		};
-		D1E03FE150F54E4C84C1312A /* package */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = 2C2CA09ADFDB44DD8C334BB9 /* Build configuration list for PBXAggregateTarget "package" */;
-			buildPhases = (
-				D999B4D291FB460083D5B5BE /* CMake PostBuild Rules */,
-			);
-			dependencies = (
-				299D21F7D52845D8A17BDEBF /* PBXTargetDependency */,
-			);
-			name = package;
-			productName = package;
-		};
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		05EAAE342C094C91964EDF75 /* /Users/anthonymesa/Desktop/muser-build/include/GL/glxew.h */ = {isa = PBXBuildFile; fileRef = FEC71FAFF27F4D4FB6C818FF /* /Users/anthonymesa/Desktop/muser-build/include/GL/glxew.h */; };
-		07C8C7CEAB824175B8C18494 /* /Users/anthonymesa/Desktop/muser-build/include/GLFW/glfw3.h */ = {isa = PBXBuildFile; fileRef = EB7D09E07F0E414DB4A5F920 /* /Users/anthonymesa/Desktop/muser-build/include/GLFW/glfw3.h */; };
-		2DBC880384C44F0FB95CA51F /* /Users/anthonymesa/Desktop/muser-build/src/Muse.cpp */ = {isa = PBXBuildFile; fileRef = 17C0015E05D744D08BD63C6E /* /Users/anthonymesa/Desktop/muser-build/src/Muse.cpp */; };
-		30962D1124FD4D8EAB06DB1D /* /Users/anthonymesa/Desktop/muser-build/src/header/RenderMuser.h */ = {isa = PBXBuildFile; fileRef = 5783CAE4EAE94EF6841E95EA /* /Users/anthonymesa/Desktop/muser-build/src/header/RenderMuser.h */; };
-		53A9E84AF43B4D50A3C57887 /* /Users/anthonymesa/Desktop/muser-build/include/GL/eglew.h */ = {isa = PBXBuildFile; fileRef = F20B24EC6E434D3E96000706 /* /Users/anthonymesa/Desktop/muser-build/include/GL/eglew.h */; };
-		5CC9EA2A88404B66B74BB8A7 /* /Users/anthonymesa/Desktop/muser-build/include/GL/wglew.h */ = {isa = PBXBuildFile; fileRef = AB720EFA3C2F4E128E69FB63 /* /Users/anthonymesa/Desktop/muser-build/include/GL/wglew.h */; };
-		6CFD0450456A462B8BB0C8BB /* /Users/anthonymesa/Desktop/muser-build/src/header/Muse.h */ = {isa = PBXBuildFile; fileRef = 131E498A762B4866B727BCBF /* /Users/anthonymesa/Desktop/muser-build/src/header/Muse.h */; };
-		6D00A4F5F8FD48189FDD5FF8 /* /Users/anthonymesa/Desktop/muser-build/include/stb_image/stb_image.h */ = {isa = PBXBuildFile; fileRef = 08237966763C4CD6BA2D4278 /* /Users/anthonymesa/Desktop/muser-build/include/stb_image/stb_image.h */; };
-		70E362EDB2194D58A78D5176 = {isa = PBXBuildFile; fileRef = 8562DE43621B48EA97EB46A0; };
-		7239E097E2ED40DFBCA47DB3 /* /Users/anthonymesa/Desktop/muser-build/include/GLFW/glfw3native.h */ = {isa = PBXBuildFile; fileRef = AE872F7895834348B16C2FFE /* /Users/anthonymesa/Desktop/muser-build/include/GLFW/glfw3native.h */; };
-		7786A5B789E845C0A1A129FC /* /Users/anthonymesa/Desktop/muser-build/src/RenderMuser.cpp */ = {isa = PBXBuildFile; fileRef = 8F93C1DBE1384582BDC2B0D4 /* /Users/anthonymesa/Desktop/muser-build/src/RenderMuser.cpp */; };
-		946D8BA0EEDA49AE885AC7AF /* /Users/anthonymesa/Desktop/muser-build/src/Application.cpp */ = {isa = PBXBuildFile; fileRef = 5DBC525959F34C87825B29D0 /* /Users/anthonymesa/Desktop/muser-build/src/Application.cpp */; };
-		C6FFC22992F04F728EB6B4A7 /* /Users/anthonymesa/Desktop/muser-build/include/math_3d/math_3d.h */ = {isa = PBXBuildFile; fileRef = A5647F4FA2AA49C39EF93AA5 /* /Users/anthonymesa/Desktop/muser-build/include/math_3d/math_3d.h */; };
-		E6C471F4019A4D709E461854 /* /Users/anthonymesa/Desktop/muser-build/include/GL/glew.h */ = {isa = PBXBuildFile; fileRef = AF6BC0D7AFC149FC977D2926 /* /Users/anthonymesa/Desktop/muser-build/include/GL/glew.h */; };
-		F363A30E5FF24B23B4BEB114 = {isa = PBXBuildFile; fileRef = 8562DE43621B48EA97EB46A0; };
-		FA3FD253493C4D5B9ACC3733 /* /Users/anthonymesa/Desktop/muser-build/src/header/Application.h */ = {isa = PBXBuildFile; fileRef = 9EC9E9F95D9C46A2B397EEE6 /* /Users/anthonymesa/Desktop/muser-build/src/header/Application.h */; };
+		08040B44127A46B18D15156B /* /Users/anthonymesa/Desktop/muser-build/include/GL/glxew.h */ = {isa = PBXBuildFile; fileRef = E66E8D5B6E32435BA02A4BAB /* /Users/anthonymesa/Desktop/muser-build/include/GL/glxew.h */; };
+		3C084AFCAAC046D6AA03CFE8 /* /Users/anthonymesa/Desktop/muser-build/include/GLFW/glfw3.h */ = {isa = PBXBuildFile; fileRef = D657E58D15D64B53AA059AE9 /* /Users/anthonymesa/Desktop/muser-build/include/GLFW/glfw3.h */; };
+		4184192C1D2F4940936046C8 /* /Users/anthonymesa/Desktop/muser-build/include/GL/wglew.h */ = {isa = PBXBuildFile; fileRef = 54B94EBA963C4520889DF30E /* /Users/anthonymesa/Desktop/muser-build/include/GL/wglew.h */; };
+		676D16065BA64551A077028E /* /Users/anthonymesa/Desktop/muser-build/include/GLFW/glfw3native.h */ = {isa = PBXBuildFile; fileRef = F9D0C05799C24325A90CD980 /* /Users/anthonymesa/Desktop/muser-build/include/GLFW/glfw3native.h */; };
+		7303AAFE9A7841A886BA312E /* /Users/anthonymesa/Desktop/muser-build/src/header/RenderMuser.h */ = {isa = PBXBuildFile; fileRef = A62360292F624DC08797EF20 /* /Users/anthonymesa/Desktop/muser-build/src/header/RenderMuser.h */; };
+		8608092E49A5458FB0942838 /* /Users/anthonymesa/Desktop/muser-build/src/Muse.cpp */ = {isa = PBXBuildFile; fileRef = AF45E4AC46AE43D9BB21BED9 /* /Users/anthonymesa/Desktop/muser-build/src/Muse.cpp */; };
+		89A411033E064E5CBF6288D1 /* /Users/anthonymesa/Desktop/muser-build/src/Application.cpp */ = {isa = PBXBuildFile; fileRef = 68C1F8DE06E14C708C992432 /* /Users/anthonymesa/Desktop/muser-build/src/Application.cpp */; };
+		8A318354ED5D415CBA833DAA /* /Users/anthonymesa/Desktop/muser-build/include/GL/glew.h */ = {isa = PBXBuildFile; fileRef = CE64E1EC279646DDA5C0B81D /* /Users/anthonymesa/Desktop/muser-build/include/GL/glew.h */; };
+		A4126E2FFFD140A8AB75A655 /* /Users/anthonymesa/Desktop/muser-build/include/GL/eglew.h */ = {isa = PBXBuildFile; fileRef = 649EB3BC4F4242109AD1FF54 /* /Users/anthonymesa/Desktop/muser-build/include/GL/eglew.h */; };
+		A56ECD93123D4FCEBEB4049E /* /Users/anthonymesa/Desktop/muser-build/src/header/Application.h */ = {isa = PBXBuildFile; fileRef = 31E7F063134D4F488C9351D4 /* /Users/anthonymesa/Desktop/muser-build/src/header/Application.h */; };
+		BAD095D3180B489A80FAA2BA /* /Users/anthonymesa/Desktop/muser-build/src/header/Muse.h */ = {isa = PBXBuildFile; fileRef = 1E27764637F34280B9A618C8 /* /Users/anthonymesa/Desktop/muser-build/src/header/Muse.h */; };
+		DB8064B0206D4F779E6BE05A /* /Users/anthonymesa/Desktop/muser-build/include/math_3d/math_3d.h */ = {isa = PBXBuildFile; fileRef = 97B91CBD3E4C4996883125CF /* /Users/anthonymesa/Desktop/muser-build/include/math_3d/math_3d.h */; };
+		DCE005CD40A042D48E8EB16D /* /Users/anthonymesa/Desktop/muser-build/src/RenderMuser.cpp */ = {isa = PBXBuildFile; fileRef = 33EC877B3E1D457CB8F1478A /* /Users/anthonymesa/Desktop/muser-build/src/RenderMuser.cpp */; };
+		E8655ACB087A4D45AD491C14 /* /Users/anthonymesa/Desktop/muser-build/include/stb_image/stb_image.h */ = {isa = PBXBuildFile; fileRef = 48139712EC414459B6B9A18B /* /Users/anthonymesa/Desktop/muser-build/include/stb_image/stb_image.h */; };
+		E8F3546EF2A54CB495379DD7 = {isa = PBXBuildFile; fileRef = EADAFB05C92A4759A8A7D549; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildStyle section */
-		7F5183C50BFF44ADA0A90CB7 /* RelWithDebInfo */ = {
+		2B2F2D7BD85349AD80BE3A5E /* RelWithDebInfo */ = {
 			isa = PBXBuildStyle;
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
 			};
 			name = RelWithDebInfo;
 		};
-		8DFF9F9E143A41A6A2B1EDEC /* Release */ = {
-			isa = PBXBuildStyle;
-			buildSettings = {
-				COPY_PHASE_STRIP = NO;
-			};
-			name = Release;
-		};
-		AAFA368E00F94164B9131707 /* MinSizeRel */ = {
-			isa = PBXBuildStyle;
-			buildSettings = {
-				COPY_PHASE_STRIP = NO;
-			};
-			name = MinSizeRel;
-		};
-		E7BE1664744D475AAE36F00A /* Debug */ = {
+		750A2F679C7F4D07BB7FEFAD /* Debug */ = {
 			isa = PBXBuildStyle;
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
 			};
 			name = Debug;
 		};
+		831F259CF64244A591A96068 /* Release */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = Release;
+		};
+		F2B80B9BD6284A889A6F9C12 /* MinSizeRel */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = MinSizeRel;
+		};
 /* End PBXBuildStyle section */
 
 /* Begin PBXContainerItemProxy section */
-		03A79C5D07284C1E846950F5 /* PBXContainerItemProxy */ = {
+		6412561385FB497D82195542 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 7DEB3FC7AE5C4C2FB001F5CB /* Project object */;
+			containerPortal = 8EFC7EEDA7384898A6A2770D /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 72236D4763FB41AC82E302CC;
+			remoteGlobalIDString = BDC8359308D94F4F9484BE62;
 			remoteInfo = ZERO_CHECK;
 		};
-		20D3EF556E7C4EF49E6A8343 /* PBXContainerItemProxy */ = {
+		81F5B509312846AABE25EB27 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 7DEB3FC7AE5C4C2FB001F5CB /* Project object */;
+			containerPortal = 8EFC7EEDA7384898A6A2770D /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 672496426C7B443EA882F24B;
-			remoteInfo = ALL_BUILD;
+			remoteGlobalIDString = BDC8359308D94F4F9484BE62;
+			remoteInfo = ZERO_CHECK;
 		};
-		78FA0D50DDF44F4A9BBCBC2C /* PBXContainerItemProxy */ = {
+		88FA3F5214F24F128FB13442 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 7DEB3FC7AE5C4C2FB001F5CB /* Project object */;
+			containerPortal = 8EFC7EEDA7384898A6A2770D /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 8397FBA031624BBC9A0E47A6;
+			remoteGlobalIDString = EBADFC08522149A2AC595646;
 			remoteInfo = Muser;
-		};
-		925E7D6B6ED3433C83BE04B9 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7DEB3FC7AE5C4C2FB001F5CB /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 72236D4763FB41AC82E302CC;
-			remoteInfo = ZERO_CHECK;
-		};
-		D4DA087860B94A208C2D4DF2 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7DEB3FC7AE5C4C2FB001F5CB /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 672496426C7B443EA882F24B;
-			remoteInfo = ALL_BUILD;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		041C3896F65041F6A499DF5C = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = ""; path = ""; sourceTree = SOURCE_ROOT; };
-		08237966763C4CD6BA2D4278 /* /Users/anthonymesa/Desktop/muser-build/include/stb_image/stb_image.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = stb_image.h; path = include/stb_image/stb_image.h; sourceTree = SOURCE_ROOT; };
-		131E498A762B4866B727BCBF /* /Users/anthonymesa/Desktop/muser-build/src/header/Muse.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = Muse.h; path = src/header/Muse.h; sourceTree = SOURCE_ROOT; };
-		17C0015E05D744D08BD63C6E /* /Users/anthonymesa/Desktop/muser-build/src/Muse.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = Muse.cpp; path = src/Muse.cpp; sourceTree = SOURCE_ROOT; };
-		4AE46A7219134C32A81A6C18 /* Muser */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = Muser; sourceTree = BUILT_PRODUCTS_DIR; };
-		5783CAE4EAE94EF6841E95EA /* /Users/anthonymesa/Desktop/muser-build/src/header/RenderMuser.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = RenderMuser.h; path = src/header/RenderMuser.h; sourceTree = SOURCE_ROOT; };
-		5DBC525959F34C87825B29D0 /* /Users/anthonymesa/Desktop/muser-build/src/Application.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = Application.cpp; path = src/Application.cpp; sourceTree = SOURCE_ROOT; };
-		8562DE43621B48EA97EB46A0 = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = ""; path = ""; sourceTree = SOURCE_ROOT; };
-		8F93C1DBE1384582BDC2B0D4 /* /Users/anthonymesa/Desktop/muser-build/src/RenderMuser.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = RenderMuser.cpp; path = src/RenderMuser.cpp; sourceTree = SOURCE_ROOT; };
-		9EC9E9F95D9C46A2B397EEE6 /* /Users/anthonymesa/Desktop/muser-build/src/header/Application.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = Application.h; path = src/header/Application.h; sourceTree = SOURCE_ROOT; };
-		A5647F4FA2AA49C39EF93AA5 /* /Users/anthonymesa/Desktop/muser-build/include/math_3d/math_3d.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = math_3d.h; path = include/math_3d/math_3d.h; sourceTree = SOURCE_ROOT; };
-		AB720EFA3C2F4E128E69FB63 /* /Users/anthonymesa/Desktop/muser-build/include/GL/wglew.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = wglew.h; path = include/GL/wglew.h; sourceTree = SOURCE_ROOT; };
-		AE872F7895834348B16C2FFE /* /Users/anthonymesa/Desktop/muser-build/include/GLFW/glfw3native.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = glfw3native.h; path = include/GLFW/glfw3native.h; sourceTree = SOURCE_ROOT; };
-		AF6BC0D7AFC149FC977D2926 /* /Users/anthonymesa/Desktop/muser-build/include/GL/glew.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = glew.h; path = include/GL/glew.h; sourceTree = SOURCE_ROOT; };
-		EB7D09E07F0E414DB4A5F920 /* /Users/anthonymesa/Desktop/muser-build/include/GLFW/glfw3.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = glfw3.h; path = include/GLFW/glfw3.h; sourceTree = SOURCE_ROOT; };
-		F20B24EC6E434D3E96000706 /* /Users/anthonymesa/Desktop/muser-build/include/GL/eglew.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = eglew.h; path = include/GL/eglew.h; sourceTree = SOURCE_ROOT; };
-		FEC71FAFF27F4D4FB6C818FF /* /Users/anthonymesa/Desktop/muser-build/include/GL/glxew.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = glxew.h; path = include/GL/glxew.h; sourceTree = SOURCE_ROOT; };
+		1E27764637F34280B9A618C8 /* /Users/anthonymesa/Desktop/muser-build/src/header/Muse.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = Muse.h; path = src/header/Muse.h; sourceTree = SOURCE_ROOT; };
+		31E7F063134D4F488C9351D4 /* /Users/anthonymesa/Desktop/muser-build/src/header/Application.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = Application.h; path = src/header/Application.h; sourceTree = SOURCE_ROOT; };
+		33EC877B3E1D457CB8F1478A /* /Users/anthonymesa/Desktop/muser-build/src/RenderMuser.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = RenderMuser.cpp; path = src/RenderMuser.cpp; sourceTree = SOURCE_ROOT; };
+		48139712EC414459B6B9A18B /* /Users/anthonymesa/Desktop/muser-build/include/stb_image/stb_image.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = stb_image.h; path = include/stb_image/stb_image.h; sourceTree = SOURCE_ROOT; };
+		54B94EBA963C4520889DF30E /* /Users/anthonymesa/Desktop/muser-build/include/GL/wglew.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = wglew.h; path = include/GL/wglew.h; sourceTree = SOURCE_ROOT; };
+		649EB3BC4F4242109AD1FF54 /* /Users/anthonymesa/Desktop/muser-build/include/GL/eglew.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = eglew.h; path = include/GL/eglew.h; sourceTree = SOURCE_ROOT; };
+		68C1F8DE06E14C708C992432 /* /Users/anthonymesa/Desktop/muser-build/src/Application.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = Application.cpp; path = src/Application.cpp; sourceTree = SOURCE_ROOT; };
+		8A39A7E311664EB1A53BFF83 /* Muser */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = Muser; sourceTree = BUILT_PRODUCTS_DIR; };
+		9274512135184125B91C3357 = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = ""; path = ""; sourceTree = SOURCE_ROOT; };
+		97B91CBD3E4C4996883125CF /* /Users/anthonymesa/Desktop/muser-build/include/math_3d/math_3d.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = math_3d.h; path = include/math_3d/math_3d.h; sourceTree = SOURCE_ROOT; };
+		A62360292F624DC08797EF20 /* /Users/anthonymesa/Desktop/muser-build/src/header/RenderMuser.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = RenderMuser.h; path = src/header/RenderMuser.h; sourceTree = SOURCE_ROOT; };
+		AF45E4AC46AE43D9BB21BED9 /* /Users/anthonymesa/Desktop/muser-build/src/Muse.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = Muse.cpp; path = src/Muse.cpp; sourceTree = SOURCE_ROOT; };
+		CE64E1EC279646DDA5C0B81D /* /Users/anthonymesa/Desktop/muser-build/include/GL/glew.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = glew.h; path = include/GL/glew.h; sourceTree = SOURCE_ROOT; };
+		D657E58D15D64B53AA059AE9 /* /Users/anthonymesa/Desktop/muser-build/include/GLFW/glfw3.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = glfw3.h; path = include/GLFW/glfw3.h; sourceTree = SOURCE_ROOT; };
+		E66E8D5B6E32435BA02A4BAB /* /Users/anthonymesa/Desktop/muser-build/include/GL/glxew.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = glxew.h; path = include/GL/glxew.h; sourceTree = SOURCE_ROOT; };
+		EADAFB05C92A4759A8A7D549 = {isa = PBXFileReference; explicitFileType = sourcecode; fileEncoding = 4; name = ""; path = ""; sourceTree = SOURCE_ROOT; };
+		F9D0C05799C24325A90CD980 /* /Users/anthonymesa/Desktop/muser-build/include/GLFW/glfw3native.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = glfw3native.h; path = include/GLFW/glfw3native.h; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
-		0D9665C6EB304E078BC8EF25 /* ALL_BUILD */ = {
+		65065AB576C54ED0AD364E13 = {
 			isa = PBXGroup;
 			children = (
-				B03497A15808445FB3FA86D1 /* CMake Rules */,
-				041C3896F65041F6A499DF5C,
-			);
-			name = ALL_BUILD;
-			sourceTree = "<group>";
-		};
-		3A6465AFCE674A718D0BA707 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				4AE46A7219134C32A81A6C18 /* Muser */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		6EE879D4D9724BB5A613F00E = {
-			isa = PBXGroup;
-			children = (
-				C36D196FB99647E8BB3181ED /* Muser */,
-				0D9665C6EB304E078BC8EF25 /* ALL_BUILD */,
-				3A6465AFCE674A718D0BA707 /* Products */,
+				8902EC3B55B841C2A155D332 /* Muser */,
+				F1BACC73662C4E81BD84863D /* ALL_BUILD */,
+				FFF6CFBC32514180AC4990E1 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		B03497A15808445FB3FA86D1 /* CMake Rules */ = {
+		6DBA6845717C420D958B8EDA /* Header Files */ = {
+			isa = PBXGroup;
+			children = (
+				649EB3BC4F4242109AD1FF54 /* /Users/anthonymesa/Desktop/muser-build/include/GL/eglew.h */,
+				CE64E1EC279646DDA5C0B81D /* /Users/anthonymesa/Desktop/muser-build/include/GL/glew.h */,
+				E66E8D5B6E32435BA02A4BAB /* /Users/anthonymesa/Desktop/muser-build/include/GL/glxew.h */,
+				54B94EBA963C4520889DF30E /* /Users/anthonymesa/Desktop/muser-build/include/GL/wglew.h */,
+				D657E58D15D64B53AA059AE9 /* /Users/anthonymesa/Desktop/muser-build/include/GLFW/glfw3.h */,
+				F9D0C05799C24325A90CD980 /* /Users/anthonymesa/Desktop/muser-build/include/GLFW/glfw3native.h */,
+				97B91CBD3E4C4996883125CF /* /Users/anthonymesa/Desktop/muser-build/include/math_3d/math_3d.h */,
+				48139712EC414459B6B9A18B /* /Users/anthonymesa/Desktop/muser-build/include/stb_image/stb_image.h */,
+				31E7F063134D4F488C9351D4 /* /Users/anthonymesa/Desktop/muser-build/src/header/Application.h */,
+				1E27764637F34280B9A618C8 /* /Users/anthonymesa/Desktop/muser-build/src/header/Muse.h */,
+				A62360292F624DC08797EF20 /* /Users/anthonymesa/Desktop/muser-build/src/header/RenderMuser.h */,
+			);
+			name = "Header Files";
+			sourceTree = "<group>";
+		};
+		8902EC3B55B841C2A155D332 /* Muser */ = {
+			isa = PBXGroup;
+			children = (
+				D28917C41CF64154B6F91223 /* Source Files */,
+				6DBA6845717C420D958B8EDA /* Header Files */,
+				EADAFB05C92A4759A8A7D549,
+			);
+			name = Muser;
+			sourceTree = "<group>";
+		};
+		9C06A9F9D8CA4CEA9395789E /* CMake Rules */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			name = "CMake Rules";
 			sourceTree = "<group>";
 		};
-		B4D7AF98946748799D6A8BFB /* Source Files */ = {
+		D28917C41CF64154B6F91223 /* Source Files */ = {
 			isa = PBXGroup;
 			children = (
-				5DBC525959F34C87825B29D0 /* /Users/anthonymesa/Desktop/muser-build/src/Application.cpp */,
-				17C0015E05D744D08BD63C6E /* /Users/anthonymesa/Desktop/muser-build/src/Muse.cpp */,
-				8F93C1DBE1384582BDC2B0D4 /* /Users/anthonymesa/Desktop/muser-build/src/RenderMuser.cpp */,
+				68C1F8DE06E14C708C992432 /* /Users/anthonymesa/Desktop/muser-build/src/Application.cpp */,
+				AF45E4AC46AE43D9BB21BED9 /* /Users/anthonymesa/Desktop/muser-build/src/Muse.cpp */,
+				33EC877B3E1D457CB8F1478A /* /Users/anthonymesa/Desktop/muser-build/src/RenderMuser.cpp */,
 			);
 			name = "Source Files";
 			sourceTree = "<group>";
 		};
-		C36D196FB99647E8BB3181ED /* Muser */ = {
+		F1BACC73662C4E81BD84863D /* ALL_BUILD */ = {
 			isa = PBXGroup;
 			children = (
-				B4D7AF98946748799D6A8BFB /* Source Files */,
-				D6B1098B832C44A8AA9C08C9 /* Header Files */,
-				8562DE43621B48EA97EB46A0,
+				9C06A9F9D8CA4CEA9395789E /* CMake Rules */,
+				9274512135184125B91C3357,
 			);
-			name = Muser;
+			name = ALL_BUILD;
 			sourceTree = "<group>";
 		};
-		D6B1098B832C44A8AA9C08C9 /* Header Files */ = {
+		FFF6CFBC32514180AC4990E1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F20B24EC6E434D3E96000706 /* /Users/anthonymesa/Desktop/muser-build/include/GL/eglew.h */,
-				AF6BC0D7AFC149FC977D2926 /* /Users/anthonymesa/Desktop/muser-build/include/GL/glew.h */,
-				FEC71FAFF27F4D4FB6C818FF /* /Users/anthonymesa/Desktop/muser-build/include/GL/glxew.h */,
-				AB720EFA3C2F4E128E69FB63 /* /Users/anthonymesa/Desktop/muser-build/include/GL/wglew.h */,
-				EB7D09E07F0E414DB4A5F920 /* /Users/anthonymesa/Desktop/muser-build/include/GLFW/glfw3.h */,
-				AE872F7895834348B16C2FFE /* /Users/anthonymesa/Desktop/muser-build/include/GLFW/glfw3native.h */,
-				A5647F4FA2AA49C39EF93AA5 /* /Users/anthonymesa/Desktop/muser-build/include/math_3d/math_3d.h */,
-				08237966763C4CD6BA2D4278 /* /Users/anthonymesa/Desktop/muser-build/include/stb_image/stb_image.h */,
-				9EC9E9F95D9C46A2B397EEE6 /* /Users/anthonymesa/Desktop/muser-build/src/header/Application.h */,
-				131E498A762B4866B727BCBF /* /Users/anthonymesa/Desktop/muser-build/src/header/Muse.h */,
-				5783CAE4EAE94EF6841E95EA /* /Users/anthonymesa/Desktop/muser-build/src/header/RenderMuser.h */,
+				8A39A7E311664EB1A53BFF83 /* Muser */,
 			);
-			name = "Header Files";
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8397FBA031624BBC9A0E47A6 /* Muser */ = {
+		EBADFC08522149A2AC595646 /* Muser */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 835868836DBB4A01BB4FED5C /* Build configuration list for PBXNativeTarget "Muser" */;
+			buildConfigurationList = CFCC2E881A3F4F198CB1E300 /* Build configuration list for PBXNativeTarget "Muser" */;
 			buildPhases = (
-				923C2D75F0D74F28A9C9EA6C /* Sources */,
+				C1282F39C5FC4919BC8D559A /* Sources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				E0783DCCFFA54D3FA2BCEDEC /* PBXTargetDependency */,
+				23B4D14F346C437EBD469A28 /* PBXTargetDependency */,
 			);
 			name = Muser;
 			productName = Muser;
-			productReference = 4AE46A7219134C32A81A6C18 /* Muser */;
-			productType = "com.apple.product-type.application";
+			productReference = 8A39A7E311664EB1A53BFF83 /* Muser */;
+			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		7DEB3FC7AE5C4C2FB001F5CB /* Project object */ = {
+		8EFC7EEDA7384898A6A2770D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1110;
 			};
-			buildConfigurationList = 6ACDF136251D49A2A9707BF3 /* Build configuration list for PBXProject "Muser" */;
+			buildConfigurationList = 4563084F852B4528A1CC575C /* Build configuration list for PBXProject "Muser" */;
 			buildSettings = {
 			};
 			buildStyles = (
-				E7BE1664744D475AAE36F00A /* Debug */,
-				8DFF9F9E143A41A6A2B1EDEC /* Release */,
-				AAFA368E00F94164B9131707 /* MinSizeRel */,
-				7F5183C50BFF44ADA0A90CB7 /* RelWithDebInfo */,
+				750A2F679C7F4D07BB7FEFAD /* Debug */,
+				831F259CF64244A591A96068 /* Release */,
+				F2B80B9BD6284A889A6F9C12 /* MinSizeRel */,
+				2B2F2D7BD85349AD80BE3A5E /* RelWithDebInfo */,
 			);
 			compatibilityVersion = "Xcode 3.2";
 			hasScannedForEncodings = 0;
-			mainGroup = 6EE879D4D9724BB5A613F00E;
+			mainGroup = 65065AB576C54ED0AD364E13;
 			projectDirPath = ../../;
 			projectRoot = "";
 			targets = (
-				672496426C7B443EA882F24B /* ALL_BUILD */,
-				8397FBA031624BBC9A0E47A6 /* Muser */,
-				72236D4763FB41AC82E302CC /* ZERO_CHECK */,
-				A8731364C763460B86EEE8E5 /* install */,
-				D1E03FE150F54E4C84C1312A /* package */,
+				471E19769A2B4248A0428B13 /* ALL_BUILD */,
+				EBADFC08522149A2AC595646 /* Muser */,
+				BDC8359308D94F4F9484BE62 /* ZERO_CHECK */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0977F97638DE4C42A12FDDC6 = {
+		46F45A5BB2024C0F83F97106 = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -305,59 +264,7 @@
 exit 0";
 			showEnvVarsInLog = 0;
 		};
-		0BFDD44BD354495591C4D3FA /* CMake Rules */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			name = "CMake Rules";
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "make -C /Users/anthonymesa/Desktop/muser-build/bin/mac -f /Users/anthonymesa/Desktop/muser-build/bin/mac/CMakeScripts/ALL_BUILD_cmakeRulesBuildPhase.make$CONFIGURATION OBJDIR=$(basename \"$OBJECT_FILE_DIR_normal\") all";
-			showEnvVarsInLog = 0;
-		};
-		685D9A039CE54CB2968F11FF = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# shell script goes here
-exit 0";
-			showEnvVarsInLog = 0;
-		};
-		6CE69CB64EBC4FFF9F608C4B /* CMake PostBuild Rules */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			name = "CMake PostBuild Rules";
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "make -C /Users/anthonymesa/Desktop/muser-build/bin/mac -f /Users/anthonymesa/Desktop/muser-build/bin/mac/CMakeScripts/install_postBuildPhase.make$CONFIGURATION OBJDIR=$(basename \"$OBJECT_FILE_DIR_normal\") all";
-			showEnvVarsInLog = 0;
-		};
-		895F137B095748D3B0A6CC3A = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# shell script goes here
-exit 0";
-			showEnvVarsInLog = 0;
-		};
-		B20A7DFEF6C44009864FF7DB /* CMake Rules */ = {
+		47BA76C8CEAA464CB2EDE310 /* CMake Rules */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -368,7 +275,7 @@ exit 0";
 			shellScript = "make -C /Users/anthonymesa/Desktop/muser-build/bin/mac -f /Users/anthonymesa/Desktop/muser-build/bin/mac/CMakeScripts/ZERO_CHECK_cmakeRulesBuildPhase.make$CONFIGURATION OBJDIR=$(basename \"$OBJECT_FILE_DIR_normal\") all";
 			showEnvVarsInLog = 0;
 		};
-		D63A0A986385449B987D4C09 = {
+		7DBB11CF791C4F9BB2511D08 = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -383,111 +290,52 @@ exit 0";
 exit 0";
 			showEnvVarsInLog = 0;
 		};
-		D999B4D291FB460083D5B5BE /* CMake PostBuild Rules */ = {
+		7EFC5DDF192F4B68A229B396 /* CMake Rules */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			name = "CMake PostBuild Rules";
+			name = "CMake Rules";
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "make -C /Users/anthonymesa/Desktop/muser-build/bin/mac -f /Users/anthonymesa/Desktop/muser-build/bin/mac/CMakeScripts/package_postBuildPhase.make$CONFIGURATION OBJDIR=$(basename \"$OBJECT_FILE_DIR_normal\") all";
+			shellScript = "make -C /Users/anthonymesa/Desktop/muser-build/bin/mac -f /Users/anthonymesa/Desktop/muser-build/bin/mac/CMakeScripts/ALL_BUILD_cmakeRulesBuildPhase.make$CONFIGURATION OBJDIR=$(basename \"$OBJECT_FILE_DIR_normal\") all";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		923C2D75F0D74F28A9C9EA6C /* Sources */ = {
+		C1282F39C5FC4919BC8D559A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				946D8BA0EEDA49AE885AC7AF /* /Users/anthonymesa/Desktop/muser-build/src/Application.cpp */,
-				2DBC880384C44F0FB95CA51F /* /Users/anthonymesa/Desktop/muser-build/src/Muse.cpp */,
-				7786A5B789E845C0A1A129FC /* /Users/anthonymesa/Desktop/muser-build/src/RenderMuser.cpp */,
+				89A411033E064E5CBF6288D1 /* /Users/anthonymesa/Desktop/muser-build/src/Application.cpp */,
+				8608092E49A5458FB0942838 /* /Users/anthonymesa/Desktop/muser-build/src/Muse.cpp */,
+				DCE005CD40A042D48E8EB16D /* /Users/anthonymesa/Desktop/muser-build/src/RenderMuser.cpp */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		299D21F7D52845D8A17BDEBF /* PBXTargetDependency */ = {
+		23B4D14F346C437EBD469A28 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 672496426C7B443EA882F24B /* ALL_BUILD */;
-			targetProxy = 20D3EF556E7C4EF49E6A8343 /* PBXContainerItemProxy */;
+			target = BDC8359308D94F4F9484BE62 /* ZERO_CHECK */;
+			targetProxy = 81F5B509312846AABE25EB27 /* PBXContainerItemProxy */;
 		};
-		394410EA7EED40B9B08FB971 /* PBXTargetDependency */ = {
+		BBDB376E0A634B0FACA3B008 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 672496426C7B443EA882F24B /* ALL_BUILD */;
-			targetProxy = D4DA087860B94A208C2D4DF2 /* PBXContainerItemProxy */;
+			target = BDC8359308D94F4F9484BE62 /* ZERO_CHECK */;
+			targetProxy = 6412561385FB497D82195542 /* PBXContainerItemProxy */;
 		};
-		E0783DCCFFA54D3FA2BCEDEC /* PBXTargetDependency */ = {
+		F0ACB154B779404C93A6993C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 72236D4763FB41AC82E302CC /* ZERO_CHECK */;
-			targetProxy = 03A79C5D07284C1E846950F5 /* PBXContainerItemProxy */;
-		};
-		E1BD95A69B8B466F822F0B1F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 8397FBA031624BBC9A0E47A6 /* Muser */;
-			targetProxy = 78FA0D50DDF44F4A9BBCBC2C /* PBXContainerItemProxy */;
-		};
-		F0CA999AFC9A4DB1B89CF4C1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 72236D4763FB41AC82E302CC /* ZERO_CHECK */;
-			targetProxy = 925E7D6B6ED3433C83BE04B9 /* PBXContainerItemProxy */;
+			target = EBADFC08522149A2AC595646 /* Muser */;
+			targetProxy = 88FA3F5214F24F128FB13442 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		0D3D928910DD43F0B7105C06 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				OTHER_LDFLAGS = " ";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = ALL_BUILD;
-				SECTORDER_FLAGS = "";
-				SYMROOT = "/Users/anthonymesa/Desktop/muser-build/bin/mac";
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
-			};
-			name = Release;
-		};
-		1D1EF0B8AFA5437BA0048B46 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk;
-				SYMROOT = "/Users/anthonymesa/Desktop/muser-build/bin/mac/build";
-			};
-			name = Release;
-		};
-		363C2CD192644DBAB07AEDD2 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				OTHER_LDFLAGS = " ";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = ZERO_CHECK;
-				SECTORDER_FLAGS = "";
-				SYMROOT = "/Users/anthonymesa/Desktop/muser-build/bin/mac";
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
-			};
-			name = Debug;
-		};
-		3C8E39C83FFF4738B8B018FB /* MinSizeRel */ = {
+		129D0A218E0947028249D1DD /* MinSizeRel */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ONLY_ACTIVE_ARCH = YES;
@@ -496,7 +344,7 @@ exit 0";
 			};
 			name = MinSizeRel;
 		};
-		409D491553A449118A9E3401 /* Release */ = {
+		2141F2A7526E4E96ACEA89EC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
@@ -508,7 +356,7 @@ exit 0";
 				INSTALL_PATH = "";
 				OTHER_LDFLAGS = " ";
 				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = ZERO_CHECK;
+				PRODUCT_NAME = ALL_BUILD;
 				SECTORDER_FLAGS = "";
 				SYMROOT = "/Users/anthonymesa/Desktop/muser-build/bin/mac";
 				USE_HEADERMAP = NO;
@@ -516,156 +364,7 @@ exit 0";
 			};
 			name = Release;
 		};
-		437C9E45AD3349A99943A18E /* MinSizeRel */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				OTHER_LDFLAGS = " ";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = ALL_BUILD;
-				SECTORDER_FLAGS = "";
-				SYMROOT = "/Users/anthonymesa/Desktop/muser-build/bin/mac";
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
-			};
-			name = MinSizeRel;
-		};
-		47897F47B5ED46B2AC88975A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				OTHER_LDFLAGS = " ";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = ALL_BUILD;
-				SECTORDER_FLAGS = "";
-				SYMROOT = "/Users/anthonymesa/Desktop/muser-build/bin/mac";
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
-			};
-			name = Debug;
-		};
-		639CF27259EE4197A2037349 /* RelWithDebInfo */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				OTHER_LDFLAGS = " ";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = install;
-				SECTORDER_FLAGS = "";
-				SYMROOT = "/Users/anthonymesa/Desktop/muser-build/bin/mac";
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
-			};
-			name = RelWithDebInfo;
-		};
-		72A8A947A6F142958CB8B0B6 /* RelWithDebInfo */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk;
-				SYMROOT = "/Users/anthonymesa/Desktop/muser-build/bin/mac/build";
-			};
-			name = RelWithDebInfo;
-		};
-		75D3544267EE4B849186CD4F /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				OTHER_LDFLAGS = " ";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = package;
-				SECTORDER_FLAGS = "";
-				SYMROOT = "/Users/anthonymesa/Desktop/muser-build/bin/mac";
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
-			};
-			name = Release;
-		};
-		78786AE1E5874B2B898CA41F /* MinSizeRel */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				OTHER_LDFLAGS = " ";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = ZERO_CHECK;
-				SECTORDER_FLAGS = "";
-				SYMROOT = "/Users/anthonymesa/Desktop/muser-build/bin/mac";
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
-			};
-			name = MinSizeRel;
-		};
-		7F2D1E90E8414CEA9DC2C705 /* RelWithDebInfo */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				OTHER_LDFLAGS = " ";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = ALL_BUILD;
-				SECTORDER_FLAGS = "";
-				SYMROOT = "/Users/anthonymesa/Desktop/muser-build/bin/mac";
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
-			};
-			name = RelWithDebInfo;
-		};
-		96D5EB63187449E2A4C7FD4A /* MinSizeRel */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				OTHER_LDFLAGS = " ";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = package;
-				SECTORDER_FLAGS = "";
-				SYMROOT = "/Users/anthonymesa/Desktop/muser-build/bin/mac";
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
-			};
-			name = MinSizeRel;
-		};
-		9B90DC3E0F6E46C8A6706746 /* Debug */ = {
+		2C31CE699A464341ADC1C289 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_CXX_LIBRARY = "libc++";
@@ -679,7 +378,6 @@ exit 0";
 				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = ("/Users/anthonymesa/Desktop/muser-build/include","/Users/anthonymesa/Desktop/muser-build/src/header");
-				INFOPLIST_FILE = "/Users/anthonymesa/Desktop/muser-build/bin/mac/CMakeFiles/Muser.dir/Info.plist";
 				INSTALL_PATH = "";
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_CPLUSPLUSFLAGS = " -std=c++14                    ";
@@ -693,7 +391,7 @@ exit 0";
 			};
 			name = Debug;
 		};
-		A5172B85D70844A9B9238C4E /* MinSizeRel */ = {
+		4D2BE9ADF7974FB7ACFA7550 /* MinSizeRel */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_CXX_LIBRARY = "libc++";
@@ -707,7 +405,6 @@ exit 0";
 				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = ("/Users/anthonymesa/Desktop/muser-build/include","/Users/anthonymesa/Desktop/muser-build/src/header");
-				INFOPLIST_FILE = "/Users/anthonymesa/Desktop/muser-build/bin/mac/CMakeFiles/Muser.dir/Info.plist";
 				INSTALL_PATH = "";
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_CPLUSPLUSFLAGS = " -std=c++14                    -DNDEBUG  ";
@@ -721,68 +418,26 @@ exit 0";
 			};
 			name = MinSizeRel;
 		};
-		A6EC24212E244EB5B0026DD3 /* RelWithDebInfo */ = {
+		7BF63C6A1FBE4918A1FAE6CD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LIBRARY = "libc++";
 				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				CONFIGURATION_BUILD_DIR = "/Users/anthonymesa/Desktop/muser-build/build/mac/Release";
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = ("/Users/anthonymesa/Desktop/muser-build/include","/Users/anthonymesa/Desktop/muser-build/src/header");
 				INSTALL_PATH = "";
-				OTHER_LDFLAGS = " ";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = " -std=c++14                    -DNDEBUG  ";
+				OTHER_LDFLAGS = " -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -framework CoreFoundation -framework CoreGraphics -framework CoreVideo -framework IOKit -framework AppKit -framework OpenGl /Users/anthonymesa/Desktop/muser-build/lib/GL/Mac/glew32s.lib /Users/anthonymesa/Desktop/muser-build/lib/GLFW/Mac/lib-macos/libglfw3.a";
 				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = package;
-				SECTORDER_FLAGS = "";
-				SYMROOT = "/Users/anthonymesa/Desktop/muser-build/bin/mac";
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
-			};
-			name = RelWithDebInfo;
-		};
-		B37C5213083C4016B8C6E543 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				OTHER_LDFLAGS = " ";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = install;
-				SECTORDER_FLAGS = "";
-				SYMROOT = "/Users/anthonymesa/Desktop/muser-build/bin/mac";
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
-			};
-			name = Debug;
-		};
-		D3434DBDC34444179BB06249 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk;
-				SYMROOT = "/Users/anthonymesa/Desktop/muser-build/bin/mac/build";
-			};
-			name = Debug;
-		};
-		DA729E80AE234E1AB68CF9B2 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				OTHER_LDFLAGS = " ";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = install;
+				PRODUCT_NAME = Muser;
 				SECTORDER_FLAGS = "";
 				SYMROOT = "/Users/anthonymesa/Desktop/muser-build/bin/mac";
 				USE_HEADERMAP = NO;
@@ -790,7 +445,7 @@ exit 0";
 			};
 			name = Release;
 		};
-		E71B9518097441F1A428597A /* Debug */ = {
+		7D8750E1A6144F1AB988AE07 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
@@ -802,7 +457,7 @@ exit 0";
 				INSTALL_PATH = "";
 				OTHER_LDFLAGS = " ";
 				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = package;
+				PRODUCT_NAME = ALL_BUILD;
 				SECTORDER_FLAGS = "";
 				SYMROOT = "/Users/anthonymesa/Desktop/muser-build/bin/mac";
 				USE_HEADERMAP = NO;
@@ -810,7 +465,16 @@ exit 0";
 			};
 			name = Debug;
 		};
-		F3AA715BB5A54231A266102B /* RelWithDebInfo */ = {
+		9445B62A21014B3AB3048133 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk;
+				SYMROOT = "/Users/anthonymesa/Desktop/muser-build/bin/mac/build";
+			};
+			name = Release;
+		};
+		971D943078D144AFA7526361 /* RelWithDebInfo */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
@@ -830,35 +494,7 @@ exit 0";
 			};
 			name = RelWithDebInfo;
 		};
-		F637142385D54396836D0D2C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_CXX_LIBRARY = "libc++";
-				COMBINE_HIDPI_IMAGES = YES;
-				CONFIGURATION_BUILD_DIR = "/Users/anthonymesa/Desktop/muser-build/build/mac/Release";
-				EXECUTABLE_PREFIX = "";
-				EXECUTABLE_SUFFIX = "";
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 3;
-				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = ("/Users/anthonymesa/Desktop/muser-build/include","/Users/anthonymesa/Desktop/muser-build/src/header");
-				INFOPLIST_FILE = "/Users/anthonymesa/Desktop/muser-build/bin/mac/CMakeFiles/Muser.dir/Info.plist";
-				INSTALL_PATH = "";
-				LIBRARY_SEARCH_PATHS = "";
-				OTHER_CPLUSPLUSFLAGS = " -std=c++14                    -DNDEBUG  ";
-				OTHER_LDFLAGS = " -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -framework CoreFoundation -framework CoreGraphics -framework CoreVideo -framework IOKit -framework AppKit -framework OpenGl /Users/anthonymesa/Desktop/muser-build/lib/GL/Mac/glew32s.lib /Users/anthonymesa/Desktop/muser-build/lib/GLFW/Mac/lib-macos/libglfw3.a";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = Muser;
-				SECTORDER_FLAGS = "";
-				SYMROOT = "/Users/anthonymesa/Desktop/muser-build/bin/mac";
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
-			};
-			name = Release;
-		};
-		F8E5B0CA403B4BD09CF09D0B /* MinSizeRel */ = {
+		9899B2AD26704D6FB7D80B63 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
@@ -870,7 +506,36 @@ exit 0";
 				INSTALL_PATH = "";
 				OTHER_LDFLAGS = " ";
 				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = install;
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/anthonymesa/Desktop/muser-build/bin/mac";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Release;
+		};
+		99E38642D0A647E1B74EAB30 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk;
+				SYMROOT = "/Users/anthonymesa/Desktop/muser-build/bin/mac/build";
+			};
+			name = Debug;
+		};
+		ADD57BC8E8114AFAA127E2DF /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
 				SECTORDER_FLAGS = "";
 				SYMROOT = "/Users/anthonymesa/Desktop/muser-build/bin/mac";
 				USE_HEADERMAP = NO;
@@ -878,7 +543,27 @@ exit 0";
 			};
 			name = MinSizeRel;
 		};
-		FEC10FDE769A41318121A6AC /* RelWithDebInfo */ = {
+		DC5D9912B36C4312B787C024 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/anthonymesa/Desktop/muser-build/bin/mac";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Debug;
+		};
+		DD4C7E8603574C4DB32E2446 /* RelWithDebInfo */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_CXX_LIBRARY = "libc++";
@@ -892,7 +577,6 @@ exit 0";
 				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = ("/Users/anthonymesa/Desktop/muser-build/include","/Users/anthonymesa/Desktop/muser-build/src/header");
-				INFOPLIST_FILE = "/Users/anthonymesa/Desktop/muser-build/bin/mac/CMakeFiles/Muser.dir/Info.plist";
 				INSTALL_PATH = "";
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_CPLUSPLUSFLAGS = " -std=c++14                       -DNDEBUG  ";
@@ -906,76 +590,103 @@ exit 0";
 			};
 			name = RelWithDebInfo;
 		};
+		F18D0976199B4AA298C21D3E /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/anthonymesa/Desktop/muser-build/bin/mac";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = RelWithDebInfo;
+		};
+		F4E6ABB2BD0A4A0799EA4D07 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/anthonymesa/Desktop/muser-build/bin/mac";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = MinSizeRel;
+		};
+		FD824EC175A945238B8ABCF9 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk;
+				SYMROOT = "/Users/anthonymesa/Desktop/muser-build/bin/mac/build";
+			};
+			name = RelWithDebInfo;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		198BADF688F9468FA5AD526D /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */ = {
+		3E7121438D2C4C029A50F8F1 /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				363C2CD192644DBAB07AEDD2 /* Debug */,
-				409D491553A449118A9E3401 /* Release */,
-				78786AE1E5874B2B898CA41F /* MinSizeRel */,
-				F3AA715BB5A54231A266102B /* RelWithDebInfo */,
+				7D8750E1A6144F1AB988AE07 /* Debug */,
+				2141F2A7526E4E96ACEA89EC /* Release */,
+				ADD57BC8E8114AFAA127E2DF /* MinSizeRel */,
+				F18D0976199B4AA298C21D3E /* RelWithDebInfo */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		2C2CA09ADFDB44DD8C334BB9 /* Build configuration list for PBXAggregateTarget "package" */ = {
+		4563084F852B4528A1CC575C /* Build configuration list for PBXProject "Muser" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E71B9518097441F1A428597A /* Debug */,
-				75D3544267EE4B849186CD4F /* Release */,
-				96D5EB63187449E2A4C7FD4A /* MinSizeRel */,
-				A6EC24212E244EB5B0026DD3 /* RelWithDebInfo */,
+				99E38642D0A647E1B74EAB30 /* Debug */,
+				9445B62A21014B3AB3048133 /* Release */,
+				129D0A218E0947028249D1DD /* MinSizeRel */,
+				FD824EC175A945238B8ABCF9 /* RelWithDebInfo */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		54E7ECC0568D4121B90BF7C1 /* Build configuration list for PBXAggregateTarget "install" */ = {
+		9724048040B548D784420316 /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B37C5213083C4016B8C6E543 /* Debug */,
-				DA729E80AE234E1AB68CF9B2 /* Release */,
-				F8E5B0CA403B4BD09CF09D0B /* MinSizeRel */,
-				639CF27259EE4197A2037349 /* RelWithDebInfo */,
+				DC5D9912B36C4312B787C024 /* Debug */,
+				9899B2AD26704D6FB7D80B63 /* Release */,
+				F4E6ABB2BD0A4A0799EA4D07 /* MinSizeRel */,
+				971D943078D144AFA7526361 /* RelWithDebInfo */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		6ACDF136251D49A2A9707BF3 /* Build configuration list for PBXProject "Muser" */ = {
+		CFCC2E881A3F4F198CB1E300 /* Build configuration list for PBXNativeTarget "Muser" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D3434DBDC34444179BB06249 /* Debug */,
-				1D1EF0B8AFA5437BA0048B46 /* Release */,
-				3C8E39C83FFF4738B8B018FB /* MinSizeRel */,
-				72A8A947A6F142958CB8B0B6 /* RelWithDebInfo */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
-		};
-		835868836DBB4A01BB4FED5C /* Build configuration list for PBXNativeTarget "Muser" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9B90DC3E0F6E46C8A6706746 /* Debug */,
-				F637142385D54396836D0D2C /* Release */,
-				A5172B85D70844A9B9238C4E /* MinSizeRel */,
-				FEC10FDE769A41318121A6AC /* RelWithDebInfo */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
-		};
-		85165672EF1B482E84B23BBE /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				47897F47B5ED46B2AC88975A /* Debug */,
-				0D3D928910DD43F0B7105C06 /* Release */,
-				437C9E45AD3349A99943A18E /* MinSizeRel */,
-				7F2D1E90E8414CEA9DC2C705 /* RelWithDebInfo */,
+				2C31CE699A464341ADC1C289 /* Debug */,
+				7BF63C6A1FBE4918A1FAE6CD /* Release */,
+				4D2BE9ADF7974FB7ACFA7550 /* MinSizeRel */,
+				DD4C7E8603574C4DB32E2446 /* RelWithDebInfo */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 7DEB3FC7AE5C4C2FB001F5CB /* Project object */;
+	rootObject = 8EFC7EEDA7384898A6A2770D /* Project object */;
 }

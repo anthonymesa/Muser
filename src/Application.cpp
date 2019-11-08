@@ -43,7 +43,7 @@ GLuint loadSplashImage()
 {
 	int textureWidth, textureHeight, bpp;
 	GLuint id;
-	unsigned char* image = stbi_load("./muserbanner.jpg", &textureWidth, &textureHeight, &bpp, STBI_rgb_alpha);
+	unsigned char* image = stbi_load("muserbanner.jpg", &textureWidth, &textureHeight, &bpp, STBI_rgb_alpha);
 
 	glEnable(GL_TEXTURE_2D);
 	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);

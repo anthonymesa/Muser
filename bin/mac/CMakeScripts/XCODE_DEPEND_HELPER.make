@@ -8,31 +8,31 @@ default:
 # link.  This forces Xcode to relink the targets from scratch.  It
 # does not seem to check these dependencies itself.
 PostBuild.Muser.Debug:
-/Users/anthonymesa/Desktop/muser-build/build/mac/Debug/Muser.app/Contents/MacOS/Muser:\
+/Users/anthonymesa/Desktop/muser-build/build/mac/Debug/Muser:\
 	/Users/anthonymesa/Desktop/muser-build/lib/GL/Mac/glew32s.lib\
 	/Users/anthonymesa/Desktop/muser-build/lib/GLFW/Mac/lib-macos/libglfw3.a
-	/bin/rm -f /Users/anthonymesa/Desktop/muser-build/build/mac/Debug/Muser.app/Contents/MacOS/Muser
+	/bin/rm -f /Users/anthonymesa/Desktop/muser-build/build/mac/Debug/Muser
 
 
 PostBuild.Muser.Release:
-/Users/anthonymesa/Desktop/muser-build/build/mac/Release/Muser.app/Contents/MacOS/Muser:\
+/Users/anthonymesa/Desktop/muser-build/build/mac/Release/Muser:\
 	/Users/anthonymesa/Desktop/muser-build/lib/GL/Mac/glew32s.lib\
 	/Users/anthonymesa/Desktop/muser-build/lib/GLFW/Mac/lib-macos/libglfw3.a
-	/bin/rm -f /Users/anthonymesa/Desktop/muser-build/build/mac/Release/Muser.app/Contents/MacOS/Muser
+	/bin/rm -f /Users/anthonymesa/Desktop/muser-build/build/mac/Release/Muser
 
 
 PostBuild.Muser.MinSizeRel:
-/Users/anthonymesa/Desktop/muser-build/build/mac/MinSizeRel/Muser.app/Contents/MacOS/Muser:\
+/Users/anthonymesa/Desktop/muser-build/build/mac/MinSizeRel/Muser:\
 	/Users/anthonymesa/Desktop/muser-build/lib/GL/Mac/glew32s.lib\
 	/Users/anthonymesa/Desktop/muser-build/lib/GLFW/Mac/lib-macos/libglfw3.a
-	/bin/rm -f /Users/anthonymesa/Desktop/muser-build/build/mac/MinSizeRel/Muser.app/Contents/MacOS/Muser
+	/bin/rm -f /Users/anthonymesa/Desktop/muser-build/build/mac/MinSizeRel/Muser
 
 
 PostBuild.Muser.RelWithDebInfo:
-/Users/anthonymesa/Desktop/muser-build/build/mac/RelWithDebInfo/Muser.app/Contents/MacOS/Muser:\
+/Users/anthonymesa/Desktop/muser-build/build/mac/RelWithDebInfo/Muser:\
 	/Users/anthonymesa/Desktop/muser-build/lib/GL/Mac/glew32s.lib\
 	/Users/anthonymesa/Desktop/muser-build/lib/GLFW/Mac/lib-macos/libglfw3.a
-	/bin/rm -f /Users/anthonymesa/Desktop/muser-build/build/mac/RelWithDebInfo/Muser.app/Contents/MacOS/Muser
+	/bin/rm -f /Users/anthonymesa/Desktop/muser-build/build/mac/RelWithDebInfo/Muser
 
 
 

@@ -127,7 +127,7 @@ class Muse
             int mapCount = distance(pointerMap.begin(), pointerMap.end());
 
             std::ofstream muserBase;
-            muserBase.open("./base.mus");
+            muserBase.open("base.mus");
 
             // for each element in the verticies array, using the pointer map, find the corresponding element from the uvs array,
             // and set both objects to variables that are then passed to museVertTexDataLine
@@ -158,7 +158,7 @@ class Muse
             if (!defaultMuser.good()) {
                 try
                 {
-                    parseObj("./muserBase.obj");
+                    parseObj("muserBase.obj");
                     std::ifstream defaultMuser(input);
                 }
                 catch (std::exception& exeption)
@@ -214,7 +214,7 @@ class Muse
 
         Muse()
         {
-            loadBaseMuserData("./base.mus");
+            loadBaseMuserData("base.mus");
         }
 
         void renderToSpectrogram(std::string &nameOfFile)
