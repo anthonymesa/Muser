@@ -1,8 +1,11 @@
-/bin/
+bin/
 
-/build/
+build/
 
-/old/
+old/
 
 *.DS_STORE
 
+.vscode/
+
+lib/
