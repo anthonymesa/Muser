@@ -1,0 +1,21 @@
+<<<<<<< HEAD
+bin/
+
+build/
+
+old/
+
+.DS_STORE
+=======
+bin/
+
+build/
+
+old/
+
+.DS_STORE
+
+.vscode/
+
+lib/
+>>>>>>> 2f263f8eaeb4622ae9ec434b7ae168a8c3e31125
