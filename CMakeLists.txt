@@ -1,14 +1,20 @@
 cmake_minimum_required(VERSION 3.16.0)
 project(Muser)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -stdlib=libc++")
+if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -stdlib=libc++")
+endif()
+
+if(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /std:c++17")
+endif()
 
 set(SOURCE_DIRECTORY ${CMAKE_SOURCE_DIR}/src)
 set(LIB_DIRECTORY ${CMAKE_SOURCE_DIR}/lib)
-set(LIB_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/include)
+set(LIB_INCLUDE_DIR ${LIB_DIRECTORY}/include)
 
-INCLUDE_DIRECTORIES(${LIB_INCLUDE_DIR})
-INCLUDE_DIRECTORIES(${SOURCE_DIRECTORY}/header)
+include_directories(${LIB_INCLUDE_DIR})
+include_directories(${SOURCE_DIRECTORY}/header)
 
 if(WIN32)
 
@@ -17,14 +23,15 @@ if(WIN32)
 
     file(GLOB_RECURSE SRC_FILES ${SOURCE_DIRECTORY}/*.cpp)
     file(GLOB_RECURSE PROJECT_H_FILES ${SOURCE_DIRECTORY}/*.h)
-    file(GLOB_RECURSE LIBRARY_H_FILES ${LIB_INCLUDE_DIR}/*.h)
+    file(GLOB_RECURSE LIBRARY_H_FILES ${LIB_DIRECTORY}/*.h)
     file(GLOB_RECURSE RESOURCE_FILES ${SOURCE_DIRECTORY}/res/*)
 
-    add_executable(Muser ${SRC_FILES} ${LIBRARY_H_FILES} ${PROJECT_H_FILES} ${RESOURCE_FILES})
+    add_executable(Muser ${SRC_FILES} ${LIBRARY_H_FILES} ${PROJECT_H_FILES})
 
     target_link_libraries(Muser "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/SDK/ScopeCppSDK/SDK/lib/OpenGL32.Lib")
     target_link_libraries(Muser ${CMAKE_SOURCE_DIR}/lib/GL/Win64/glew32s.lib)
     target_link_libraries(Muser ${CMAKE_SOURCE_DIR}/lib/GLFW/Win64/lib-vc2019/glfw3.lib)
+
 endif()
 
 if(UNIX)
@@ -34,7 +41,7 @@ if(UNIX)
 
     file(GLOB_RECURSE SRC_FILES ${SOURCE_DIRECTORY}/*.cpp)
     file(GLOB_RECURSE PROJECT_H_FILES ${SOURCE_DIRECTORY}/*.h)
-    file(GLOB_RECURSE LIBRARY_H_FILES ${LIB_INCLUDE_DIR}/*.h)
+    file(GLOB_RECURSE LIBRARY_H_FILES ${LIB_DIRECTORY}/*.h)
     file(GLOB_RECURSE RESOURCE_FILES ${SOURCE_DIRECTORY}/res/*)
 
     add_executable(Muser ${SRC_FILES} ${LIBRARY_H_FILES} ${PROJECT_H_FILES} ${RESOURCE_FILES})
@@ -50,12 +57,13 @@ if(UNIX)
     target_link_libraries(Muser ${LIB_DIRECTORY}/GL/Mac/glew32s.lib)
     target_link_libraries(Muser ${LIB_DIRECTORY}/GLFW/Mac/lib-macos/libglfw3.a)
     
-    foreach(item IN ITEMS ${RESOURCE_FILES})
-        add_custom_command(
-            TARGET Muser POST_BUILD
-            COMMAND ${CMAKE_COMMAND} -E copy
-                    ${CMAKE_SOURCE_DIR}/${item}
-                    ${CMAKE_CURRENT_BINARY_DIR}/${item})
-    endforeach(item)
-    
-    endif()
+endif()
+
+foreach(item IN LISTS ${RESOURCE_FILES})
+    add_custom_command(
+        TARGET Muser POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy
+                ${CMAKE_SOURCE_DIR}/res/${item}
+                ${EXECUTABLE_OUTPUT_PATH}/Release/${item}
+    )
+endforeach()

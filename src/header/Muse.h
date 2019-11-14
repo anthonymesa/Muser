@@ -13,12 +13,14 @@
 #include <string>
 #include <fstream>
 #include <unordered_map>
+#include <filesystem>
+#include <bi_tools.h>
 
 class Muse
 {
 
     private:
-
+		
         int spectrogram_size = 9999;
 
         struct vertexUvPair
@@ -127,7 +129,7 @@ class Muse
             int mapCount = distance(pointerMap.begin(), pointerMap.end());
 
             std::ofstream muserBase;
-            muserBase.open("base.mus");
+            muserBase.open(current_directory_string + "/data/base.mus");
 
             // for each element in the verticies array, using the pointer map, find the corresponding element from the uvs array,
             // and set both objects to variables that are then passed to museVertTexDataLine
@@ -158,7 +160,7 @@ class Muse
             if (!defaultMuser.good()) {
                 try
                 {
-                    parseObj("muserBase.obj");
+                    parseObj(current_directory_string + "/data/muserBase.obj");
                     std::ifstream defaultMuser(input);
                 }
                 catch (std::exception& exeption)
@@ -211,10 +213,10 @@ class Muse
         }
 
     public:
-
+	
         Muse()
         {
-            loadBaseMuserData("base.mus");
+            loadBaseMuserData(current_directory_string + "/data/base.mus");
         }
 
         void renderToSpectrogram(std::string &nameOfFile)
@@ -226,7 +228,7 @@ class Muse
                 spectrogram[i] = new unsigned char[spectrogram_size];
             }
 
-            std::ofstream spectrogramImage(nameOfFile + ".ppm");
+            std::ofstream spectrogramImage(current_directory_string + "/" + nameOfFile + ".ppm");
 
             for (int i = 0; i < baseMuserData.size(); i++)
             {
@@ -238,15 +240,18 @@ class Muse
 
             spectrogramImage << "P3\n";
             spectrogramImage << "9999 9999\n";
-            spectrogramImage << "255";
+            spectrogramImage << "255\n";
 
             for (int i = 0; i < spectrogram_size; i++)
             {
                 for (int j = 0; j < spectrogram_size; j++)
                 {
-                    spectrogramImage << *((*(spectrogram + i)) + j) << " ";
+                    spectrogramImage << (int)*((*(spectrogram + i)) + j) << " " << std::endl;
+                    std::cout << "wrote line " << i << std::endl;
                 }
             }
+
+            std::cout << "Finished writing file" << std::endl;
 
             spectrogramImage.close();
         }

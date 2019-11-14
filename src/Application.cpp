@@ -30,11 +30,13 @@
 #include <RenderMuser.h>
 #include <Muse.h>
 #include <Application.h>
+#include <bi_tools.h>
 
 #include <iostream>
 #include <fstream>
 #include <stdexcept>
 #include <string>
+#include <filesystem>
 
 screenDimensions screen_dimensions;
 GLuint VBO;
@@ -43,7 +45,8 @@ GLuint loadSplashImage()
 {
 	int textureWidth, textureHeight, bpp;
 	GLuint id;
-	unsigned char* image = stbi_load("muserbanner.jpg", &textureWidth, &textureHeight, &bpp, STBI_rgb_alpha);
+	
+	unsigned char* image = stbi_load(current_directory_char, &textureWidth, &textureHeight, &bpp, STBI_rgb_alpha);
 
 	glEnable(GL_TEXTURE_2D);
 	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
@@ -128,6 +131,10 @@ int main(void)
 
 	// Initialize and display a new glfw window ShowSplash
 	GLFWwindow* splashWindow = showSplash();
+	
+	std::string spectrogramName = "test";
+	Muse firstObject;
+	firstObject.renderToSpectrogram(spectrogramName);
 
 	// close and destroy the splash window
 	glfwSetWindowShouldClose(splashWindow, GLFW_TRUE);
@@ -144,10 +151,6 @@ int main(void)
 	}
 
 	glfwMakeContextCurrent(mainWindow);
-
-	std::string spectrogramName = "test";
-	Muse firstObject;
-	firstObject.renderToSpectrogram(spectrogramName);
 
 	while (!glfwWindowShouldClose(mainWindow))
 	{
