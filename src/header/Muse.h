@@ -59,7 +59,7 @@ class Muse
             // if path doesnt exist, throw exception
             if (!muse.good())
             {
-                throw std::runtime_error("There is no .obj file with name " + filename + " in resources folder");
+                throw std::runtime_error("There is no .obj file with name " + filename + " in data folder");
             }
 
             std::cout << "\n" << "Opened File..." << "\n";
@@ -129,7 +129,7 @@ class Muse
             int mapCount = distance(pointerMap.begin(), pointerMap.end());
 
             std::ofstream muserBase;
-            muserBase.open(current_directory_string + "/data/base.mus");
+            muserBase.open("data/base.mus");
 
             // for each element in the verticies array, using the pointer map, find the corresponding element from the uvs array,
             // and set both objects to variables that are then passed to museVertTexDataLine
@@ -160,7 +160,7 @@ class Muse
             if (!defaultMuser.good()) {
                 try
                 {
-                    parseObj(current_directory_string + "/data/muserBase.obj");
+                    parseObj("data/muserBase.obj");
                     std::ifstream defaultMuser(input);
                 }
                 catch (std::exception& exeption)
@@ -216,10 +216,10 @@ class Muse
 	
         Muse()
         {
-            loadBaseMuserData(current_directory_string + "/data/base.mus");
+            loadBaseMuserData("data/base.mus");
         }
 
-        void renderToSpectrogram(std::string &nameOfFile)
+        void renderToSpectrogram(const std::string &nameOfFile)
         {
             spectrogram = new unsigned char*[spectrogram_size];
 
@@ -228,7 +228,7 @@ class Muse
                 spectrogram[i] = new unsigned char[spectrogram_size];
             }
 
-            std::ofstream spectrogramImage(current_directory_string + "/" + nameOfFile + ".ppm");
+            std::ofstream spectrogramImage(nameOfFile + ".ppm");
 
             for (int i = 0; i < baseMuserData.size(); i++)
             {
@@ -243,15 +243,28 @@ class Muse
             spectrogramImage << "255\n";
 
             for (int i = 0; i < spectrogram_size; i++)
-            {
+            {   
+                // Get the int 0-100 in relation to where it is in the array of width 0-9999
+                int loadingPercentage = (((double)(i + 1)/9999) * 100);
+                char progress[] = "__________";
+
+                // For each index in the current row of the spectrogram
                 for (int j = 0; j < spectrogram_size; j++)
                 {
-                    spectrogramImage << (int)*((*(spectrogram + i)) + j) << " " << std::endl;
-                    std::cout << "wrote line " << i << std::endl;
+                    spectrogramImage << (int)*((*(spectrogram + i)) + j) << " ";
+
+                    // Set the variable progress to \u2588 * (int)(((double)(j + 1)/9999) * 100).
+                    // Since multiplying strings unavailable, iterate through to the current max value of (int)(((double)(j + 1)/9999) * 100)
+                    // and inrease string value by "\u2588"
+                    for (int k = 0; k < (int)(((double)(j + 1)/9999) * 10); k++){
+                        progress[k] = '#';
+                    }
+                    std::cout << "\r" << "Writing Spectrogram: " << loadingPercentage << "% [" << progress << "]" << std::flush;
                 }
+                spectrogramImage << std::endl;
             }
 
-            std::cout << "Finished writing file" << std::endl;
+            std::cout << "\n\nFinished writing file" << std::endl;
 
             spectrogramImage.close();
         }

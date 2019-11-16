@@ -46,7 +46,7 @@ GLuint loadSplashImage()
 	int textureWidth, textureHeight, bpp;
 	GLuint id;
 	
-	unsigned char* image = stbi_load(current_directory_char, &textureWidth, &textureHeight, &bpp, STBI_rgb_alpha);
+	unsigned char* image = stbi_load("media/muserbanner.jpg", &textureWidth, &textureHeight, &bpp, STBI_rgb_alpha);
 
 	glEnable(GL_TEXTURE_2D);
 	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
@@ -132,7 +132,9 @@ int main(void)
 	// Initialize and display a new glfw window ShowSplash
 	GLFWwindow* splashWindow = showSplash();
 	
-	std::string spectrogramName = "test";
+	biPause();
+
+	std::string spectrogramName = "spectrogram_array";
 	Muse firstObject;
 	firstObject.renderToSpectrogram(spectrogramName);
 
