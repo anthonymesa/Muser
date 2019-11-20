@@ -136,7 +136,7 @@ int main(void)
 
 	std::string spectrogramName = "spectrogram_array";
 	Muse firstObject;
-	firstObject.renderToSpectrogram(spectrogramName);
+	firstObject.RenderToSpectrogram(spectrogramName);
 
 	// close and destroy the splash window
 	glfwSetWindowShouldClose(splashWindow, GLFW_TRUE);
