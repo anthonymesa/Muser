@@ -15,19 +15,3 @@ void biPause(){
   std::cout << "Press Enter to continue...\n";
   std::cin.ignore();
 }
-
-// Formats the given path for windows or apple and
-// returns the result.
-//
-// E.g.
-// Windows:    "myFile.txt"
-// Mac:        "/myfile.txt"
-//
-// const char biPath(char* &filename){
-//     #ifdef __APPLE__
-//         return filename;
-//     #elif defined _WIN32 || defined _WIN64
-//         return filename;
-//     #else
-//     #endif
-// }

@@ -73,13 +73,10 @@ GLFWwindow* showSplash()
 	GLFWwindow* splashWindow = glfwCreateWindow(1000, 341, "Muser loading...", NULL, NULL);
 	glfwMakeContextCurrent(splashWindow);
 	
-	// If Windows, initialize GLEW.
 	#ifdef _WIN32
-		
 		GLenum err = glewInit();
 		if (GLEW_OK != err)
 		{
-			/* Problem: glewInit failed, something is seriously wrong. */
 			fprintf(stderr, "Error: %s\n", glewGetErrorString(err));
 		}
 		fprintf(stdout, "Status: Using GLEW %s\n", glewGetString(GLEW_VERSION));
@@ -116,33 +113,24 @@ GLFWwindow* showSplash()
 	return splashWindow;
 }
 
-/*
- 	Main function
- 	Initializes GLFW and runs splash window, then runs main window.
- */
 int main(void)
 {
 	if (!glfwInit())
 		return -1;
 
-	// get current glfw monitor and set screen_width and screen_height accordingly
 	GLFWmonitor* primary = glfwGetPrimaryMonitor();
 	glfwGetMonitorWorkarea(primary, NULL, NULL, &screen_dimensions.session_screen_width, &screen_dimensions.session_screen_height);
 
-	// Initialize and display a new glfw window ShowSplash
 	GLFWwindow* splashWindow = showSplash();
 	
-	biPause();
-
 	std::string spectrogramName = "spectrogram_array";
 	Muse firstObject;
+	firstObject.ImportFromObj("data/alien_heart.obj");
 	firstObject.RenderToSpectrogram(spectrogramName);
 
-	// close and destroy the splash window
 	glfwSetWindowShouldClose(splashWindow, GLFW_TRUE);
 	glfwDestroyWindow(splashWindow);
 
-	// create application main window
 	glfwWindowHint(GLFW_DECORATED, GLFW_TRUE);
 	GLFWwindow* mainWindow = glfwCreateWindow(1080, 720, "Muser", NULL, NULL);
 

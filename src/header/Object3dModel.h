@@ -6,10 +6,15 @@
 #include <string>
 #include <fstream>
 #include <unordered_map>
+#include <bi_tools.h>
+
+typedef std::vector<std::tuple<float, float, float, float, float>> OBJarray;
 
 class Object3dModel
 {
     private:
+        std::ofstream log;
+
         struct verticies_uvs_map
         {
             std::unordered_map<int, int> pointer_map;
@@ -17,8 +22,6 @@ class Object3dModel
             std::vector<std::tuple<float, float>> uv_coordinates_list;
         };
 
-        //  Splits string into multiple strings
-        //
         std::vector<std::string> Split(std::string input, char splitter)
         {
             std::vector<std::string> result;
@@ -35,36 +38,59 @@ class Object3dModel
             return result;
         }
 
-        //  Parses obj file and returns struct containing the pointer map, list of all verticies and list of all uvs
-        //
         verticies_uvs_map ParseObj(const char* filename)
         {
             verticies_uvs_map obj_info;
             std::ifstream object_file(filename);
             std::string object_read_line;
+            bool v = false, vt = false, f = false;
 
+            log << "Reading .obj file:" << std::endl;
             while (getline(object_file, object_read_line))
             {
                 if (object_read_line.find("v ") != std::string::npos)
-                {
+                {  
+                    if (v == false){
+                        log << "Loading .obj vertexes..." << std::endl;
+                        v = true;
+                    }
                     obj_info.vertex_coordinates_list.push_back(VertexFromLine(object_read_line));
                 }
                 else if (object_read_line.find("vt ") != std::string::npos)
                 {
+                    if (vt == false){
+                        log << "Loading .obj texture coordinates..." << std::endl;
+                        vt = true;
+                    }
                     obj_info.uv_coordinates_list.push_back(UvFromLine(object_read_line));
                 }
                 else if (object_read_line.find("f ") != std::string::npos)
                 {
+                    if (f == false){
+                        log << "Mapping vertexes to texture coordinates..." << std::endl;
+                        f = true;
+                    }
                     GeneratePointerMap(object_read_line, obj_info.pointer_map);
                 }
             }
 
+            log << "Creating pointer map log..." << std::endl;
+            for (const auto &[ key, value ] : obj_info.pointer_map)
+            {
+                log << "Key: " << key << "| Value: " << value << std::endl;
+            }
+            log << "Map log complete..." << std::endl;
+            log << "Processed " << obj_info.vertex_coordinates_list.size() << " vertexes coordinates." << std::endl;
+            log<< "Processed " << obj_info.uv_coordinates_list.size() << " uv coordinates." << std::endl;
+            log << "Mapped " << obj_info.pointer_map.size() << " vertexes to uv coordinates." << std::endl;
             object_file.close();
+            if (!(object_file.good()))
+            {
+                log << "closed file..." << std::endl;
+            }
             return obj_info;
         }
 
-        //  Makes an XYZ tuple with data from 'v' line of OBJ
-        //
         std::tuple<float, float, float> VertexFromLine(const std::string &file_line)
         {
             float x, y, z;
@@ -76,8 +102,6 @@ class Object3dModel
             return std::make_tuple(x, y, z);
         }
 
-        //  Makes an UV tuple with data from 'vt' line of OBJ
-        //
         std::tuple<float, float> UvFromLine(const std::string &file_line)
         {
             float u, v;
@@ -88,8 +112,12 @@ class Object3dModel
             return std::make_tuple(u, v);
         }
 
-        //  Populates the entire vertex -> uv pointer map
-        //
+        /**
+         *  Creates a pointer map based on the string 'file_line' read from the '.obj' 
+         *  
+         *  Cuts the 'f' off the string and then passes each element in the group to the MapVertexToUv function
+         *  Gets the pointer_map passed to it from ParseObj and passes it on to MapVertexUv so that it doesn't have to be global
+         */
         void GeneratePointerMap(const std::string &file_line, std::unordered_map<int, int> &pointer_map)
         {
             std::vector<std::string> pointer_list = Split(file_line, ' ');
@@ -100,8 +128,15 @@ class Object3dModel
             }
         }
 
-        //  Maps a uv value to a vertex value within the pointer map
-        //
+        /**
+         * Takes one of the "v/vt/vn" elements passed to it from GeneratePointerMap
+         * and creates and appends to pointer_map a new map of the key 'v' to the value of 'vt'.
+         * 
+         * parameters:
+         *      element_in_line: One of four strings split from an 'f' line in an .obj file in GeneratePointerMap
+         *      pointer_map: The pointer map which will hold all keys mapped to all values (declared in ParseObj
+         *          and passed through as parameters)
+         */
         void MapVertexToUv(const std::string &element_in_line, std::unordered_map<int, int> &pointer_map)
         {
             std::vector<std::string> pointer = Split(element_in_line, '/');
@@ -113,23 +148,28 @@ class Object3dModel
 
         void SetDefaultMuseArray(verticies_uvs_map &obj_info)
         {
+            log << "Printing Vertex/Coordinate list..." << std::endl;
             for(size_t i = 0; i < obj_info.vertex_coordinates_list.size(); i++)
-            {
+            {   
                 std::tuple<float, float, float> vertex = obj_info.vertex_coordinates_list[i];
-                std::tuple<float, float> uv = obj_info.uv_coordinates_list[obj_info.pointer_map[i]];
-                std::get<0>(object_array[i]) = std::get<0>(vertex);
-                std::get<1>(object_array[i]) = std::get<1>(vertex);
-                std::get<2>(object_array[i]) = std::get<2>(vertex);
-                std::get<3>(object_array[i]) = std::get<0>(uv);
-                std::get<4>(object_array[i]) = std::get<1>(uv);
+                std::tuple<float, float> uv = obj_info.uv_coordinates_list[obj_info.pointer_map.find(i)->second];
+                log << std::get<0>(vertex) << " " << std::get<1>(vertex) << " " << std::get<2>(vertex) << " " << std::get<0>(uv) << " " << std::get<1>(uv) << std::endl;
+                (*obj_vertex_uv_coordinates).push_back(std::make_tuple(
+                    std::get<0>(vertex),
+                    std::get<1>(vertex),
+                    std::get<2>(vertex),
+                    std::get<0>(uv),
+                    std::get<1>(uv)
+                ));
             }
         }
 
     public:
-        std::vector<std::tuple<float, float, float, float, float>> object_array;
-        
+        OBJarray *obj_vertex_uv_coordinates = new OBJarray;
+
         Object3dModel()
         {
+            log.open("temp/log.txt");
             verticies_uvs_map obj_info = ParseObj("data/muse_default.obj");
             SetDefaultMuseArray(obj_info);
         }
@@ -140,7 +180,7 @@ class Object3dModel
             SetDefaultMuseArray(obj_info);
         }
 
-        // ~Object_3dModel(){
-
-        // }
+        ~Object3dModel(){
+            delete obj_vertex_uv_coordinates;
+        }
 };
