@@ -16,6 +16,7 @@ Muser allows users to generate sound by sculpting 3D geometry. In the future, th
 * Application of RGB material
 * RGB hue affects sin wave type (sin, square, sawtooth)
 * RGB Brightness affects maximum Hz range.
+* Move to VR framework
 
 ## Libraries Used
 
