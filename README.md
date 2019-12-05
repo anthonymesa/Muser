@@ -1,18 +1,27 @@
-![alt text](https://www.bisektor.net/media/Banners/Muser-banner.jpg "Muser")
+# Intent
 
-Muser is a program designed to convert sculpted 3D geometry into sound. This project is still under construction and the readme will be updated when an alpha version is available.
+Muser allows users to generate sound by sculpting 3D geometry. In the future, the idea is that users will be able to sculpt and listen to geometry in real time in a VR environment.
 
-# Features
+## Current Features
 
-* 3D Sculpting
-* Unlimited amoung of generateable sounds
-* Use all notes in the range of human hearing
-* On desktop or in VR
-* 3D Painting (maybe)
-* Sequencing sound objects together
+* Loading .obj models
+* Wave sound export of topographical data
+* PPM image export of topographical data
 
-# Specifications
+## Planned Features
 
-* C++
+* GUI
+* Model rendering
+* Live sculpting of .obj model
+* Application of RGB material
+* RGB hue affects sin wave type (sin, square, sawtooth)
+* RGB Brightness affects maximum Hz range.
+
+## Libraries Used
+
 * OpenGl
 * GLFW
+* GLEW
+* math_3D
+* stb_image
+* AudioFile
