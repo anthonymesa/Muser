@@ -11,7 +11,7 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
 endif()
 
 if(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /std:c++17")
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /std:c++latest /D_USE_MATH_DEFINES ")
 endif()
 
 # Set directory variables
@@ -106,7 +106,7 @@ if(WIN32)
 
     set(CMAKE_BINARY_DIR ${CMAKE_SOURCE_DIR}/bin/win)
     set(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/build/win)
-
+    set_source_files_properties(${SRC_FILES} PROPERTIES COMPILE_FLAGS /Y-)
     add_executable(${APPLICATION_NAME} ${SRC_FILES} ${LIBRARY_H_FILES} ${PROJECT_H_FILES})
 
     target_link_libraries(${APPLICATION_NAME} "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/SDK/ScopeCppSDK/SDK/lib/OpenGL32.Lib")
@@ -124,7 +124,7 @@ if(UNIX)
     set(LOCAL_RESOURCES "")
 
     copy_resources()
-
+    
     foreach(ITEM ${LOCAL_RESOURCES})
         string(FIND ${ITEM} "/data/" FIND_DATA)        
         if(NOT ${FIND_DATA} MATCHES "-1")
@@ -137,6 +137,12 @@ if(UNIX)
             set_property(
                 SOURCE ${ITEM}
                 PROPERTY MACOSX_PACKAGE_LOCATION "Resources/media")
+        endif()
+        string(FIND ${ITEM} "/temp/" FIND_MEDIA)
+        if(NOT ${FIND_MEDIA} MATCHES "-1")
+            set_property(
+                SOURCE ${ITEM}
+                PROPERTY MACOSX_PACKAGE_LOCATION "Resources/temp")
         endif()
     endforeach()
 

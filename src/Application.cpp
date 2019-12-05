@@ -15,6 +15,7 @@
 	#include <OpenGL/GL.h>
 
 #elif defined _WIN32 || defined _WIN64
+	#define NOMINMAX
 	#include <windows.h>
 	#include <GL/glew.h>
 	#include <GL/gl.h>
@@ -39,14 +40,13 @@
 #include <filesystem>
 
 screenDimensions screen_dimensions;
-GLuint VBO;
 
 GLuint loadSplashImage()
 {
 	int textureWidth, textureHeight, bpp;
 	GLuint id;
 	
-	unsigned char* image = stbi_load("media/muserbanner.jpg", &textureWidth, &textureHeight, &bpp, STBI_rgb_alpha);
+	unsigned char* image = stbi_load("media/muserbanner.jpg", &textureWidth, &textureHeight, &bpp, 0);
 
 	glEnable(GL_TEXTURE_2D);
 	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
@@ -54,16 +54,15 @@ GLuint loadSplashImage()
 	glGenTextures(1, &id);
 	glBindTexture(GL_TEXTURE_2D, id);
 
-	if (bpp == 3) glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, textureWidth, textureHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
-	else if (bpp == 4) glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, textureWidth, textureHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
-
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);	
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 
+	if (bpp == 3) glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, textureWidth, textureHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
+	else if (bpp == 4) glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, textureWidth, textureHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
+	glGenerateMipmap(GL_TEXTURE_2D);
 	stbi_image_free(image);
-
 	return id;
 }
 
@@ -83,9 +82,7 @@ GLFWwindow* showSplash()
 
 	#endif
 
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-	GLuint VBO;
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_ACCUM_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 
 	GLuint texId = loadSplashImage();
 	glBindTexture(GL_TEXTURE_2D, texId);
@@ -95,6 +92,8 @@ GLFWwindow* showSplash()
 	Vertices[1] = Vector3f(1.0f, 1.0f, 0.0f);
 	Vertices[2] = Vector3f(1.0f, -1.0f, 0.0f);
 	Vertices[3] = Vector3f(-1.0f, -1.0f, 0.0f);
+
+	GLuint VBO;
 
 	glGenBuffers(1, &VBO);
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
@@ -125,8 +124,13 @@ int main(void)
 	
 	std::string spectrogramName = "spectrogram_array";
 	Muse firstObject;
-	firstObject.ImportFromObj("data/alien_heart.obj");
+	firstObject.ImportFromObj("data/saturn.obj");
 	firstObject.RenderToSpectrogram(spectrogramName);
+	firstObject.SetNumberChannels(1);
+	firstObject.SetSampleRate(48000);
+	firstObject.SetLengthInSamples(48000);
+	firstObject.SetSpectrogramSize(1000);
+	firstObject.RenderToAudio("data/sound.wav");
 
 	glfwSetWindowShouldClose(splashWindow, GLFW_TRUE);
 	glfwDestroyWindow(splashWindow);
