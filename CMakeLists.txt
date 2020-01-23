@@ -109,8 +109,8 @@ if(WIN32)
     set_source_files_properties(${SRC_FILES} PROPERTIES COMPILE_FLAGS /Y-)
     add_executable(${APPLICATION_NAME} ${SRC_FILES} ${LIBRARY_H_FILES} ${PROJECT_H_FILES})
 
-    target_link_libraries(${APPLICATION_NAME} "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/SDK/ScopeCppSDK/SDK/lib/OpenGL32.Lib")
-    target_link_libraries(${APPLICATION_NAME} ${CMAKE_SOURCE_DIR}/lib/GL/Win64/glew32s.lib)
+    find_package(OpenGL)
+    target_link_libraries(${APPLICATION_NAME} ${OpenGL_LIBRARY})
     target_link_libraries(${APPLICATION_NAME} ${CMAKE_SOURCE_DIR}/lib/GLFW/Win64/lib-vc2019/glfw3.lib)
 
     copy_resources()
