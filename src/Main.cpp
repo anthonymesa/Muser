@@ -17,7 +17,7 @@
 #elif defined _WIN32 || defined _WIN64
 	#define NOMINMAX
 	#include <windows.h>
-	#include <glad.h>
+	#include <glad/glad.h>
 #else
 #endif
 
@@ -28,6 +28,7 @@
 #include <Muse.hpp>
 #include <Main.hpp>
 #include <bi_tools.hpp>
+#include <Shader.hpp>
 
 #include <iostream>
 #include <fstream>
@@ -79,77 +80,25 @@ int main(void)
 
     //Set OpengGl Viewport to GLFW window
     glViewport( 0, 0, screen_dimensions.session_screen_width, screen_dimensions.session_screen_height);
+    
     //====================================================
 
-    //Assign vertex.shader to c_str
-    std::ifstream vertexShaderFile("data/vertex.shader");
-    std::ostringstream vertexBuffer;
-    vertexBuffer << vertexShaderFile.rdbuf();
-    std::string vertexBufferStr = vertexBuffer.str();
-    // Warning: safe only until vertexBufferStr is destroyed or modified
-    const GLchar *vertexSource = vertexBufferStr.c_str();
+    // Muse normal_muse;
+    // float vertices[] = normal_muse.GetVertexs;
+    // float indicies[] = normal_muse.GetIndexs;
 
-    //Create and compile vertex shader with c_str
-    GLuint vertexShader;
-    vertexShader = glCreateShader(GL_VERTEX_SHADER);
-    glShaderSource(vertexShader, 1, &vertexSource, NULL);
-    glCompileShader(vertexShader);
-
-    //Check for shader compilation errors
-    int  success;
-    char infoLog[512];
-    glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &success);
-    if(!success)
-    {
-        glGetShaderInfoLog(vertexShader, 512, NULL, infoLog);
-        std::cout << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n" << infoLog << std::endl;
-    }
-
-    //Assign fragment.shader to c_str
-    std::ifstream fragmentShaderFile("data/fragment.shader");
-    std::ostringstream fragmentBuffer;
-    fragmentBuffer << fragmentShaderFile.rdbuf();
-    std::string fragmentBufferStr = fragmentBuffer.str();
-    // Warning: safe only until vertexBufferStr is destroyed or modified
-    const GLchar *fragmentSource = fragmentBufferStr.c_str();
-
-    //Create and compile vertex shader with c_str
-    GLuint fragmentShader;
-    fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-    glShaderSource(fragmentShader, 1, &fragmentSource, NULL);
-    glCompileShader(fragmentShader);
-
-    //Check for shader compilation errors
-    glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, &success);
-    if(!success)
-    {
-        glGetShaderInfoLog(fragmentShader, 512, NULL, infoLog);
-        std::cout << "ERROR::SHADER::FRAGMENT::COMPILATION_FAILED\n" << infoLog << std::endl;
-    }
-
-    //Create shader program from compiled shaders
-    GLuint shaderProgram;
-    shaderProgram = glCreateProgram();
-    glAttachShader(shaderProgram, vertexShader);
-    glAttachShader(shaderProgram, fragmentShader);
-    glLinkProgram(shaderProgram);
-
-    //Check for program linkage errors
-    glGetProgramiv(shaderProgram, GL_LINK_STATUS, &success);
-    if(!success) {
-        glGetProgramInfoLog(shaderProgram, 512, NULL, infoLog);
-        std::cout << "ERROR::SHADERS::PROGRAM::LINKAGE_FAILED\n" << infoLog << std::endl;
-    }
-
-    //Remove shaders
-    glDeleteShader(vertexShader);
-    glDeleteShader(fragmentShader);
+    Muse someObject;
 
     //Vertex input
     float vertices[] = {
-        -0.1f, -0.1f, 0.0f,
-        0.1f, -0.1f, 0.0f,
-        0.0f, 0.1f, 0.0f
+        0.5f,  0.5f, 0.0f,  // top right
+        0.5f, -0.5f, 0.0f,  // bottom right
+        -0.5f, -0.5f, 0.0f,  // bottom left
+        -0.5f,  0.5f, 0.0f   // top left 
+    };
+    unsigned int indices[] = {  // note that we start from 0!
+        0, 1, 3,   // first triangle
+        1, 2, 3    // second triangle
     };
 
     //Create Vertex Attribute Array
@@ -163,10 +112,17 @@ int main(void)
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
+    GLuint EBO;
+    glGenBuffers(1, &EBO);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+
     //Create vertex attributes for vertex data at location 0
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
     glBindVertexArray(0);
+
+    Shader* default_shader = new Shader("data/vertex.shader", "data/fragment.shader");
 
     //OpenGl render loop
     while(!glfwWindowShouldClose(splashWindow))
@@ -175,16 +131,16 @@ int main(void)
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
-        glUseProgram(shaderProgram);
+        default_shader->Use();
         glBindVertexArray(VAO);
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
         glBindVertexArray(0);
-
 
         glfwSwapBuffers(splashWindow);
         glfwPollEvents();
     }
 
+    delete default_shader;
     glfwTerminate();
     return 0;
 }

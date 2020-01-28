@@ -61,11 +61,14 @@ private:
     double Amplitude(const int &row, const int &sample_index);
     double CalculateSampleAtRow(const int &row, const int &sample_index);
     bool ElementHasValue(const int &row, const int &sample_index);
+    float* GetVertexs();
+    float* GetIndexs();
 };
 
 //====================================================
 Muse::Muse()
 {
+    
 }
 
 //====================================================
@@ -307,3 +310,12 @@ bool Muse::ElementHasValue(const int &row, const int &sample_index)
     return ((spectrogram[row][sample_index/(numSamplesPerChannel/spectrogram_size)] == '\0') ? false : true );
 }
 
+// float* Muse::GetVerticies()
+// {
+//     return muse_object.vertex_opengl_array;
+// }
+
+// float* Muse::GetIndicies()
+// {
+//     return muse_object.index_opengl_array;
+// }

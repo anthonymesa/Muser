@@ -43,7 +43,11 @@ private:
     void GeneratePointerMap(const std::string &file_line, std::unordered_map<int, int> &pointer_map);
     void MapVertexToUv(const std::string &element_in_line, std::unordered_map<int, int> &pointer_map);
     void SetDefaultMuseArray(verticies_uvs_map &obj_info);
+    void SetOpenGLVerticies();
+    void SetOpenGLIndicies();
 
+    float* vertex_opengl_array;
+    float* index_opengl_array;
 };
 
 //====================================================
@@ -51,7 +55,7 @@ Object3dModel::Object3dModel()
 {
     obj_vertex_uv_coordinates = new OBJarray;
     log.open("temp/log.txt");
-    verticies_uvs_map obj_info = ParseObj("data/muse_default.obj");
+    verticies_uvs_map obj_info = ParseObj("data/default_muse.obj");
     SetDefaultMuseArray(obj_info);
 }
 
@@ -207,3 +211,37 @@ void Object3dModel::SetDefaultMuseArray(verticies_uvs_map &obj_info)
         ));
     }
 }
+
+// void Object3dModel::SetOpenGLVerticiess()
+// {
+
+//     vertex_opengl_array = [];
+// }
+
+// void Object3dModel::SetOpenGLIndicies()
+// {
+//     index_opengl_array = [];
+// }
+
+// void Object3dModel::SetOpenglData(const char* filename)
+// {
+//     std::ifstream object_file(filename);
+//     std::string object_read_line;
+//     std::vector<float x, float y, float z> points;
+//     std::vector<int a, int b, int c> index;
+
+//     while (getline(object_file, object_read_line))
+//     {
+//         if (object_read_line.find("v ") != std::string::npos)
+//         {
+//             points.push_back();
+//         }
+//         else if (object_read_line.find("f ") != std::string::npos)
+//         {
+//             indexes.push_back();
+//         }
+//     }
+
+//     SetOpenGLVerticies(points);
+//     SetOpenGLIndicies();
+// }
