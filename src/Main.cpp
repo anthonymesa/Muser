@@ -101,6 +101,25 @@ int main(void)
         1, 2, 3    // second triangle
     };
 
+//     
+//     
+//     
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+
+
+
     //Create Vertex Attribute Array
     GLuint VAO;
     glGenVertexArrays(1, &VAO);  
