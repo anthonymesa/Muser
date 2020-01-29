@@ -83,11 +83,9 @@ int main(void)
     
     //====================================================
 
-    // Muse normal_muse;
-    // float vertices[] = normal_muse.GetVertexs;
-    // float indicies[] = normal_muse.GetIndexs;
-
-    Muse someObject;
+    Muse normal_muse;
+    float vertices[] = normal_muse.GetVerticies();
+    float indicies[] = normal_muse.GetIndicies();
 
     //Vertex input
     float vertices[] = {
@@ -100,25 +98,6 @@ int main(void)
         0, 1, 3,   // first triangle
         1, 2, 3    // second triangle
     };
-
-//     
-//     
-//     
-// 
-// 
-// 
-// 
-// 
-// 
-// 
-// 
-// 
-// 
-// 
-// 
-// 
-
-
 
     //Create Vertex Attribute Array
     GLuint VAO;

@@ -24,9 +24,12 @@ public:
 
     void Load(const char* filename);
     OBJarray* GetObjArray();
+    void GetOpenGLVerticies();
+    void GetOpenGLIndicies();
     
 private:
 
+    std::string default_object = "data/default_muse.obj";
     OBJarray* obj_vertex_uv_coordinates;
     std::ofstream log;
     struct verticies_uvs_map
@@ -55,7 +58,8 @@ Object3dModel::Object3dModel()
 {
     obj_vertex_uv_coordinates = new OBJarray;
     log.open("temp/log.txt");
-    verticies_uvs_map obj_info = ParseObj("data/default_muse.obj");
+    verticies_uvs_map obj_info = ParseObj(default_object);
+    SetOpenglData(default_object, obj_info.vertex_coordinates_list.size(), obj_info.uv_coordinates_list.size());
     SetDefaultMuseArray(obj_info);
 }
 
@@ -63,6 +67,7 @@ Object3dModel::Object3dModel()
 void Object3dModel::Load(const char* filename)
 {
     verticies_uvs_map obj_info = ParseObj(filename);
+    SetOpenglData(filename, obj_info.vertex_coordinates_list.size(), obj_info.uv_coordinates_list.size());
     SetDefaultMuseArray(obj_info);
 }
 
@@ -212,36 +217,36 @@ void Object3dModel::SetDefaultMuseArray(verticies_uvs_map &obj_info)
     }
 }
 
-// void Object3dModel::SetOpenGLVerticiess()
-// {
+void Object3dModel::SetOpenGLVerticiess()
+{
 
-//     vertex_opengl_array = [];
-// }
+    vertex_opengl_array = [];
+}
 
-// void Object3dModel::SetOpenGLIndicies()
-// {
-//     index_opengl_array = [];
-// }
+void Object3dModel::SetOpenGLIndicies()
+{
+    index_opengl_array = [];
+}
 
-// void Object3dModel::SetOpenglData(const char* filename)
-// {
-//     std::ifstream object_file(filename);
-//     std::string object_read_line;
-//     std::vector<float x, float y, float z> points;
-//     std::vector<int a, int b, int c> index;
+void Object3dModel::SetOpenglData(const char* filename, int point_amount, int index_amount)
+{
+    std::ifstream object_file(filename);
+    std::string object_read_line;
+    float points[] = new float[point_amount];
+    float indexs[] = new float[index_amount];
 
-//     while (getline(object_file, object_read_line))
-//     {
-//         if (object_read_line.find("v ") != std::string::npos)
-//         {
-//             points.push_back();
-//         }
-//         else if (object_read_line.find("f ") != std::string::npos)
-//         {
-//             indexes.push_back();
-//         }
-//     }
+    while (getline(object_file, object_read_line))
+    {
+        if (object_read_line.find("v ") != std::string::npos)
+        {
+            
+        }
+        else if (object_read_line.find("f ") != std::string::npos)
+        {
+            indexes.push_back();
+        }
+    }
 
-//     SetOpenGLVerticies(points);
-//     SetOpenGLIndicies();
-// }
+    SetOpenGLVerticies(points);
+    SetOpenGLIndicies();
+}

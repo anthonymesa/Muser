@@ -310,12 +310,12 @@ bool Muse::ElementHasValue(const int &row, const int &sample_index)
     return ((spectrogram[row][sample_index/(numSamplesPerChannel/spectrogram_size)] == '\0') ? false : true );
 }
 
-// float* Muse::GetVerticies()
-// {
-//     return muse_object.vertex_opengl_array;
-// }
+float* Muse::GetVerticies()
+{
+    return muse_object.GetOpenGLVerticies();
+}
 
-// float* Muse::GetIndicies()
-// {
-//     return muse_object.index_opengl_array;
-// }
+float* Muse::GetIndicies()
+{
+    return muse_object.GetOpenGLIndicies();
+}
