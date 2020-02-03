@@ -83,9 +83,7 @@ int main(void)
     
     //====================================================
 
-    Muse normal_muse;
-    float vertices[] = normal_muse.GetVerticies();
-    float indicies[] = normal_muse.GetIndicies();
+    Muse new_object;
 
     //Vertex input
     float vertices[] = {
