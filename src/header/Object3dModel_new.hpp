@@ -95,28 +95,38 @@ StringVector Object3dModel_new::LoadFile(const char* &filename)
 // Evaluate each line in the model_file_string vector, then set all of the data to OpenGl compliant data
 void Object3dModel_new::ParseObject(const StringVector &model_string)
 {
+    int vcount = 0, tcount = 0, ncount = 0, fcount = 0;
     object model_data;
     for(size_t i = 0; i < model_string.size(); i++)
     {
         std::string line = model_string[i];
         if (line.find("v ") != std::string::npos)
         {
+
             model_data.vertices.push_back(GetTuple(line, "VERTEX"));
+            vcount = vcount +3;
         }
         else if (line.find("vt ") != std::string::npos)
         {
             model_data.texels.push_back(GetTuple(line, "TEXEL"));
+            tcount = tcount +3;
         }
         else if (line.find("vn ") != std::string::npos)
         {
             model_data.normals.push_back(GetTuple(line, "NORMAL"));
+            ncount = ncount + 2;
         }
         else if (line.find("f ") != std::string::npos)
         {
             model_data.faces.push_back(GetTuple(line, "FACE"));
             AppendMap(line);
+            fcount = fcount + 3;
         }
     }
+    std::cout << "vertex floats = " << vcount << std::endl;
+    std::cout << "texel floats = " << tcount << std::endl;
+    std::cout << "normal floats = " << ncount << std::endl;
+    std::cout << "face ints = " << fcount << std::endl;
     SetVTData(model_data);
 }
 
@@ -195,6 +205,7 @@ void Object3dModel_new::SetVTData(const object &model_data)
             std::get<1>(uv)
         ));
     }
+    std::cout << "audio data floats = " << (*vt_audio_data).size() * 5 << std::endl;
 }
 
 //====================================================
@@ -202,3 +213,9 @@ ObjArray* Object3dModel_new::GetVTData()
 {
     return vt_audio_data;
 }
+
+// vertex floats = 294918
+// texel floats = 296067
+// normal floats = 196612
+// face ints = 589824
+// audio data floats = 491530
