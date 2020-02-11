@@ -68,6 +68,7 @@ private:
 //====================================================
 Muse::Muse()
 {
+    CreateSpectrogramArray();
 }
 
 //====================================================
@@ -99,7 +100,6 @@ void Muse::RenderToSpectrogram(std::string &filename)
     char* filename_char;
     filename_char = new char[file_length]; 
     strcpy(filename_char, filename.c_str()); 
-    CreateSpectrogramArray();
     PopulateSpectrogramArray();
     GeneratePpmFile(filename_char);
     delete[] filename_char;

@@ -38,7 +38,7 @@ private:
         std::vector<Tuple3f> normals;
         std::vector<Tuple3f> faces;
     };
-    object model_data;
+
     std::unordered_map<int, int> vt_map;
     ObjArray* vt_audio_data;
 
@@ -48,23 +48,20 @@ private:
     StringVector LineToVector(const std::string &line);
     Tuple3f GetTuple(const std::string &line, const std::string &type);
     void AppendMap(const std::string &line);
-    void SetVTData();
+    void SetVTData(const object &model_data);
 };
 
 //====================================================
 Object3dModel_new::Object3dModel_new()
 {
-    model_data = new object;
     vt_audio_data = new ObjArray;
     ParseObject(LoadFile(muse_base));
-    bug("parsed object");
 }
 
 //====================================================
 Object3dModel_new::~Object3dModel_new()
 {
     delete vt_audio_data;
-    delete model_data;
 }
 
 //====================================================
@@ -74,7 +71,7 @@ void Object3dModel_new::Load(const char* &filename)
 }
 
 //====================================================
-// Load .obj file and write contents to buffer
+// Load .obj file and write contents to string vector model_file_string
 StringVector Object3dModel_new::LoadFile(const char* &filename)
 {
     StringVector model_file_string;
@@ -82,7 +79,7 @@ StringVector Object3dModel_new::LoadFile(const char* &filename)
     std::ifstream file(filename);
     if(!file.good())
     {
-       std:: cout << "ERROR OPENING OBJ FILE" << std::endl;
+       std::cout << "ERROR OPENING OBJ FILE" << std::endl;
     }
 
     while(getline(file, line))
@@ -91,39 +88,66 @@ StringVector Object3dModel_new::LoadFile(const char* &filename)
     }
 
     file.close();
-    bug("loaded file");
     return model_file_string;
 }
 
 //====================================================
-// !!! See if you dont have to return an object, and rather can just update the actual object
+// Evaluate each line in the model_file_string vector, then set all of the data to OpenGl compliant data
 void Object3dModel_new::ParseObject(const StringVector &model_string)
 {
+    object model_data;
     for(size_t i = 0; i < model_string.size(); i++)
     {
         std::string line = model_string[i];
-        bug("got line");
         if (line.find("v ") != std::string::npos)
         {
-            (*model_data).vertices.push_back(GetTuple(line, "VERTEX"));
+            model_data.vertices.push_back(GetTuple(line, "VERTEX"));
         }
         else if (line.find("vt ") != std::string::npos)
         {
-            (*model_data).texels.push_back(GetTuple(line, "TEXEL"));
+            model_data.texels.push_back(GetTuple(line, "TEXEL"));
         }
         else if (line.find("vn ") != std::string::npos)
         {
-            (*model_data).normals.push_back(GetTuple(line, "NORMAL"));
+            model_data.normals.push_back(GetTuple(line, "NORMAL"));
         }
         else if (line.find("f ") != std::string::npos)
         {
-            (*model_data).faces.push_back(GetTuple(line, "FACE"));
+            model_data.faces.push_back(GetTuple(line, "FACE"));
             AppendMap(line);
         }
     }
-    bug("set model_data");
-    SetVTData();
-    bug("set VTdata");
+    SetVTData(model_data);
+}
+
+//====================================================
+Tuple3f Object3dModel_new::GetTuple(const std::string &line, const std::string &type)
+{
+    float a, b, c;
+    StringVector line_data = LineToVector(line);
+
+    if (type == "FACE")
+    {
+        for(size_t i = 0; i < line_data.size(); i++)
+        {
+            line_data[i] = Split(line_data[i], '/')[0];
+        }
+    }
+
+    a = (float)atof(line_data[0].c_str());
+    b = (float)atof(line_data[1].c_str());
+    // If type "Normal", only print u and v values.
+    c = (type == "NORMAL") ? 0 : (float)atof(line_data[2].c_str());
+
+    return std::make_tuple(a, b, c);
+}
+
+//====================================================
+StringVector Object3dModel_new::LineToVector(const std::string &line)
+{
+    StringVector split = Split(line, ' ');
+    StringVector shift(split.begin() + 1, split.end());
+    return shift;
 }
 
 //====================================================
@@ -144,40 +168,8 @@ StringVector Object3dModel_new::Split(const std::string &input, const char &spli
 }
 
 //====================================================
-StringVector Object3dModel_new::LineToVector(const std::string &line)
-{
-    StringVector split = Split(line, ' ');
-    StringVector shift(split.begin() + 1, split.end());
-    return shift;
-}
-
-//====================================================
-Tuple3f Object3dModel_new::GetTuple(const std::string &line, const std::string &type)
-{
-    float a, b, c;
-    StringVector line_data = LineToVector(line);
-
-    bug("Got " + type);
-
-    if (type == "FACE")
-    {
-        for(size_t i = 0; i < line_data.size(); i++)
-        {
-            line_data[i] = Split(line_data[i], '/')[0];
-        }
-    }
-
-    a = (float)atof(line_data[0].c_str());
-    b = (float)atof(line_data[1].c_str());
-    c = (type == "NORMAL") ? 0 : (float)atof(line_data[2].c_str());
-
-    return std::make_tuple(a, b, c);
-}
-
-//====================================================
 void Object3dModel_new::AppendMap(const std::string &line)
 {
-    bug("appended map");
     StringVector face_data = LineToVector(line);
     for(size_t i = 0; i < face_data.size(); i++)
     {
@@ -189,12 +181,12 @@ void Object3dModel_new::AppendMap(const std::string &line)
 }
 
 //====================================================
-void Object3dModel_new::SetVTData()
+void Object3dModel_new::SetVTData(const object &model_data)
 {
-    for(size_t i = 0; i < (*model_data).vertices.size(); i++)
+    for(size_t i = 0; i < model_data.vertices.size(); i++)
     {   
-        Tuple3f vertex = (*model_data).vertices[i];
-        Tuple3f uv = (*model_data).texels[vt_map.find(i)->second];
+        Tuple3f vertex = model_data.vertices[i];
+        Tuple3f uv = model_data.texels[vt_map.find(i)->second];
         (*vt_audio_data).push_back(std::make_tuple(
             std::get<0>(vertex),
             std::get<1>(vertex),
