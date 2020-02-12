@@ -13,7 +13,6 @@
 
 #ifdef __APPLE__
 	#include <OpenGL/gl3.h>
-
 #elif defined _WIN32 || defined _WIN64
 	#define NOMINMAX
 	#include <windows.h>
@@ -118,7 +117,7 @@ int main(void)
     glEnableVertexAttribArray(0);
     glBindVertexArray(0);
 
-    Shader* default_shader = new Shader("data/vertex.shader", "data/fragment.shader");
+    Shader* default_shader = new Shader("data/Shaders/vertex.shader", "data/Shaders/fragment.shader");
 
     //OpenGl render loop
     while(!glfwWindowShouldClose(splashWindow))

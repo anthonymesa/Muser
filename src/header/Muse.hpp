@@ -12,7 +12,7 @@
 #include <string>
 #include <fstream>
 #include <unordered_map>
-#include <Object3dModel_new.hpp>
+#include <ObjGl.hpp>
 #include <AudioFile/AudioFile.h>
 #include <bi_tools.hpp>
 
@@ -35,7 +35,7 @@ public:
 
 private:
     
-    Object3dModel_new loaded_object;
+    ObjGl loaded_object;
     int spectrogram_size = 1000;
     unsigned char** spectrogram;
     int arrayX, arrayY;
@@ -84,7 +84,7 @@ Muse::~Muse()
 //====================================================
 void Muse::ImportFromObj(const char* model)
 {
-    loaded_object.Load(model);
+// load model 
 }
 
 //====================================================
@@ -161,11 +161,11 @@ double Muse::GetMinimumTopologyValue()
     float x, y, z;
     double value, min_value = 9999999999;
 
-    for (size_t i = 0; i < (*loaded_object.GetVTData()).size(); i++)
+    for (size_t i = 0; i < (*loaded_object.GetVtData()).size(); i++)
     {
-        x = std::get<0>((*loaded_object.GetVTData())[i]);
-        y = std::get<1>((*loaded_object.GetVTData())[i]);
-        z = std::get<2>((*loaded_object.GetVTData())[i]);
+        x = std::get<0>((*loaded_object.GetVtData())[i]);
+        y = std::get<1>((*loaded_object.GetVtData())[i]);
+        z = std::get<2>((*loaded_object.GetVtData())[i]);
         value = DistanceToOrigin(x, y, z) + .00001;
         min_value = (value < min_value) ? value : min_value;
     }
@@ -178,11 +178,11 @@ double Muse::GetMaximumTopologyValue()
     float x, y, z;
     double value, max_value = 0;
 
-    for (size_t i = 0; i < (*loaded_object.GetVTData()).size(); i++)
+    for (size_t i = 0; i < (*loaded_object.GetVtData()).size(); i++)
     {
-        x = std::get<0>((*loaded_object.GetVTData())[i]);
-        y = std::get<1>((*loaded_object.GetVTData())[i]);
-        z = std::get<2>((*loaded_object.GetVTData())[i]);
+        x = std::get<0>((*loaded_object.GetVtData())[i]);
+        y = std::get<1>((*loaded_object.GetVtData())[i]);
+        z = std::get<2>((*loaded_object.GetVtData())[i]);
         value = DistanceToOrigin(x, y, z) + .00001;
         max_value = (value > max_value) ? value : max_value;
     }
@@ -193,9 +193,9 @@ double Muse::GetMaximumTopologyValue()
 double Muse::GetTopologyValue(int i)
 {
     float x, y, z;
-    x = std::get<0>((*loaded_object.GetVTData())[i]);
-    y = std::get<1>((*loaded_object.GetVTData())[i]);
-    z = std::get<2>((*loaded_object.GetVTData())[i]);
+    x = std::get<0>((*loaded_object.GetVtData())[i]);
+    y = std::get<1>((*loaded_object.GetVtData())[i]);
+    z = std::get<2>((*loaded_object.GetVtData())[i]);
     return DistanceToOrigin(x, y, z) + .00001;
 }
 
@@ -205,10 +205,10 @@ void Muse::PopulateSpectrogramArray()
     double min = GetMinimumTopologyValue();
     double max = GetMaximumTopologyValue();
 
-    for (int i = 0; i < (*loaded_object.GetVTData()).size(); i++)
+    for (int i = 0; i < (*loaded_object.GetVtData()).size(); i++)
     {
-        arrayX = int (std::get<3>((*loaded_object.GetVTData())[i]) * spectrogram_size);
-        arrayY = int (std::get<4>((*loaded_object.GetVTData())[i]) * spectrogram_size);
+        arrayX = int (std::get<3>((*loaded_object.GetVtData())[i]) * spectrogram_size);
+        arrayY = int (std::get<4>((*loaded_object.GetVtData())[i]) * spectrogram_size);
 
         spectrogram[arrayY][arrayX] = ChangeDistanceToValue(i, min, max, 255);
     }
