@@ -13,7 +13,6 @@
 
 #ifdef __APPLE__
 	#include <OpenGL/gl3.h>
-
 #elif defined _WIN32 || defined _WIN64
 	#define NOMINMAX
 	#include <windows.h>
@@ -83,18 +82,14 @@ int main(void)
     
     //====================================================
 
-    // Muse normal_muse;
-    // float vertices[] = normal_muse.GetVertexs;
-    // float indicies[] = normal_muse.GetIndexs;
-
-    Muse someObject;
+    Muse new_object;
 
     //Vertex input
     float vertices[] = {
-        0.5f,  0.5f, 0.0f,  // top right
-        0.5f, -0.5f, 0.0f,  // bottom right
-        -0.5f, -0.5f, 0.0f,  // bottom left
-        -0.5f,  0.5f, 0.0f   // top left 
+         0.5f,  0.5f,  0.0f,  // top right
+         0.5f, -0.5f,  0.0f,  // bottom right
+        -0.5f, -0.5f,  0.0f,  // bottom left
+        -0.5f,  0.5f,  0.0f   // top left 
     };
     unsigned int indices[] = {  // note that we start from 0!
         0, 1, 3,   // first triangle
@@ -122,7 +117,7 @@ int main(void)
     glEnableVertexAttribArray(0);
     glBindVertexArray(0);
 
-    Shader* default_shader = new Shader("data/vertex.shader", "data/fragment.shader");
+    Shader* default_shader = new Shader("data/shaders/vertex.shader", "data/shaders/fragment.shader");
 
     //OpenGl render loop
     while(!glfwWindowShouldClose(splashWindow))

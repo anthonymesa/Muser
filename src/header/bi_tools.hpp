@@ -14,3 +14,8 @@ void biPause(){
   std::cout << "Press Enter to continue...\n";
   std::cin.ignore();
 }
+
+void bug(const std::string &input)
+{
+  std::cout << input << std::endl;
+}

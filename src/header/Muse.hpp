@@ -12,7 +12,7 @@
 #include <string>
 #include <fstream>
 #include <unordered_map>
-#include <Object3dModel.hpp>
+#include <ObjGl.hpp>
 #include <AudioFile/AudioFile.h>
 #include <bi_tools.hpp>
 
@@ -35,7 +35,7 @@ public:
 
 private:
     
-    Object3dModel muse_object;
+    ObjGl loaded_object;
     int spectrogram_size = 1000;
     unsigned char** spectrogram;
     int arrayX, arrayY;
@@ -60,15 +60,15 @@ private:
     double Frequency(const int &row);
     double Amplitude(const int &row, const int &sample_index);
     double CalculateSampleAtRow(const int &row, const int &sample_index);
+
+    // Checks to see if the value at x,y position of spectrogram is greater than 0.
     bool ElementHasValue(const int &row, const int &sample_index);
-    float* GetVertexs();
-    float* GetIndexs();
 };
 
 //====================================================
 Muse::Muse()
 {
-    
+    CreateSpectrogramArray();
 }
 
 //====================================================
@@ -84,7 +84,7 @@ Muse::~Muse()
 //====================================================
 void Muse::ImportFromObj(const char* model)
 {
-    muse_object.Load(model);
+// load model 
 }
 
 //====================================================
@@ -100,7 +100,6 @@ void Muse::RenderToSpectrogram(std::string &filename)
     char* filename_char;
     filename_char = new char[file_length]; 
     strcpy(filename_char, filename.c_str()); 
-    CreateSpectrogramArray();
     PopulateSpectrogramArray();
     GeneratePpmFile(filename_char);
     delete[] filename_char;
@@ -157,22 +156,16 @@ void Muse::CreateSpectrogramArray()
 }
 
 //====================================================
-// float Muse::GetElementInLine(const int &element, const int &row)
-// {
-//     return std::get<element>((*muse_object.GetObjArray())[row]);
-// }
-
-//====================================================
 double Muse::GetMinimumTopologyValue()
 {
     float x, y, z;
     double value, min_value = 9999999999;
 
-    for (size_t i = 0; i < (*muse_object.GetObjArray()).size(); i++)
+    for (size_t i = 0; i < (*loaded_object.GetVtData()).size(); i++)
     {
-        x = std::get<0>((*muse_object.GetObjArray())[i]);
-        y = std::get<1>((*muse_object.GetObjArray())[i]);
-        z = std::get<2>((*muse_object.GetObjArray())[i]);
+        x = std::get<0>((*loaded_object.GetVtData())[i]);
+        y = std::get<1>((*loaded_object.GetVtData())[i]);
+        z = std::get<2>((*loaded_object.GetVtData())[i]);
         value = DistanceToOrigin(x, y, z) + .00001;
         min_value = (value < min_value) ? value : min_value;
     }
@@ -185,11 +178,11 @@ double Muse::GetMaximumTopologyValue()
     float x, y, z;
     double value, max_value = 0;
 
-    for (size_t i = 0; i < (*muse_object.GetObjArray()).size(); i++)
+    for (size_t i = 0; i < (*loaded_object.GetVtData()).size(); i++)
     {
-        x = std::get<0>((*muse_object.GetObjArray())[i]);
-        y = std::get<1>((*muse_object.GetObjArray())[i]);
-        z = std::get<2>((*muse_object.GetObjArray())[i]);
+        x = std::get<0>((*loaded_object.GetVtData())[i]);
+        y = std::get<1>((*loaded_object.GetVtData())[i]);
+        z = std::get<2>((*loaded_object.GetVtData())[i]);
         value = DistanceToOrigin(x, y, z) + .00001;
         max_value = (value > max_value) ? value : max_value;
     }
@@ -200,9 +193,9 @@ double Muse::GetMaximumTopologyValue()
 double Muse::GetTopologyValue(int i)
 {
     float x, y, z;
-    x = std::get<0>((*muse_object.GetObjArray())[i]);
-    y = std::get<1>((*muse_object.GetObjArray())[i]);
-    z = std::get<2>((*muse_object.GetObjArray())[i]);
+    x = std::get<0>((*loaded_object.GetVtData())[i]);
+    y = std::get<1>((*loaded_object.GetVtData())[i]);
+    z = std::get<2>((*loaded_object.GetVtData())[i]);
     return DistanceToOrigin(x, y, z) + .00001;
 }
 
@@ -212,10 +205,10 @@ void Muse::PopulateSpectrogramArray()
     double min = GetMinimumTopologyValue();
     double max = GetMaximumTopologyValue();
 
-    for (int i = 0; i < (*muse_object.GetObjArray()).size(); i++)
+    for (int i = 0; i < (*loaded_object.GetVtData()).size(); i++)
     {
-        arrayX = int (std::get<3>((*muse_object.GetObjArray())[i]) * spectrogram_size);
-        arrayY = int (std::get<4>((*muse_object.GetObjArray())[i]) * spectrogram_size);
+        arrayX = int (std::get<3>((*loaded_object.GetVtData())[i]) * spectrogram_size);
+        arrayY = int (std::get<4>((*loaded_object.GetVtData())[i]) * spectrogram_size);
 
         spectrogram[arrayY][arrayX] = ChangeDistanceToValue(i, min, max, 255);
     }
@@ -309,13 +302,3 @@ bool Muse::ElementHasValue(const int &row, const int &sample_index)
 {
     return ((spectrogram[row][sample_index/(numSamplesPerChannel/spectrogram_size)] == '\0') ? false : true );
 }
-
-// float* Muse::GetVerticies()
-// {
-//     return muse_object.vertex_opengl_array;
-// }
-
-// float* Muse::GetIndicies()
-// {
-//     return muse_object.index_opengl_array;
-// }
