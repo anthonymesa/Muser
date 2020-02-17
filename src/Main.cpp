@@ -86,10 +86,10 @@ int main(void)
 
     //Vertex input
     float vertices[] = {
-        0.5f,  0.5f, 0.0f,  // top right
-        0.5f, -0.5f, 0.0f,  // bottom right
-        -0.5f, -0.5f, 0.0f,  // bottom left
-        -0.5f,  0.5f, 0.0f   // top left 
+         0.5f,  0.5f,  0.0f,  // top right
+         0.5f, -0.5f,  0.0f,  // bottom right
+        -0.5f, -0.5f,  0.0f,  // bottom left
+        -0.5f,  0.5f,  0.0f   // top left 
     };
     unsigned int indices[] = {  // note that we start from 0!
         0, 1, 3,   // first triangle
@@ -117,7 +117,7 @@ int main(void)
     glEnableVertexAttribArray(0);
     glBindVertexArray(0);
 
-    Shader* default_shader = new Shader("data/Shaders/vertex.shader", "data/Shaders/fragment.shader");
+    Shader* default_shader = new Shader("data/shaders/vertex.shader", "data/shaders/fragment.shader");
 
     //OpenGl render loop
     while(!glfwWindowShouldClose(splashWindow))

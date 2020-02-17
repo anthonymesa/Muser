@@ -35,17 +35,18 @@ class ObjGl
     public:
 
         ObjGl();
+        ObjGl(std::string &file_name)
         ~ObjGl();
         float* GetMuseVertices();
         float* GetMuseTexels();
         float* GetMuseNormals();
-        int* GetMuseFaces();
+        unsigned int* GetMuseFaces();
         VectorTuple5f* GetVtData();
 
     private:
 
         VectorTuple5f vt_data;                     // Data to be passed for spectrogram generation
-        std::string default_muse_folder = "data/Default_muse";
+        std::string default_muse_folder = "data/default_muse";
         std::unordered_map<int, int> vt_map;
 
         const std::size_t vertices_size = 294918;
@@ -63,16 +64,11 @@ class ObjGl
 
         muse_data muse;
 
-        // Load the object folder and load individual object files.
         void LoadObject(std::string &file_name);
-
-        // Populate the arrays with the file data
         void LoadVertices(std::ifstream &vertex_file);
         void LoadTexels(std::ifstream &texel_file);
         void LoadNormals(std::ifstream &normal_file);
         void LoadFaces(std::ifstream &face_file);
-
-        // Split string into vector of strings using delimiter.
         std::vector<std::string> Split(const std::string &input, const char &Splitter);
 
         void SetVtData();
@@ -80,14 +76,20 @@ class ObjGl
 
 ObjGl::ObjGl()
 {
-    bug("created ObjGl");
     muse.vertices = new float[vertices_size];
     muse.texels = new float[texels_size];
     muse.normals = new float[normals_size];
     muse.faces = new unsigned int[faces_size];
-    bug("created the four arrays");
     LoadObject(default_muse_folder);
-    bug("loaded the objects");
+}
+
+ObjGl::ObjGl(std::string &file_name)
+{
+    muse.vertices = new float[vertices_size];
+    muse.texels = new float[texels_size];
+    muse.normals = new float[normals_size];
+    muse.faces = new unsigned int[faces_size];
+    LoadObject(file_name);
 }
 
 ObjGl::~ObjGl(){
@@ -97,6 +99,7 @@ ObjGl::~ObjGl(){
     delete[] muse.faces;
 }
 
+// Obj data is loaded as 4 seperate .mus files in a folder, then parsed individually.
 void ObjGl::LoadObject(std::string &file_name){
     std::string vertex_file_path = file_name + "/vertex.mus";
     std::string texel_file_path = file_name + "/texel.mus";
@@ -108,7 +111,6 @@ void ObjGl::LoadObject(std::string &file_name){
     std::ifstream normal_file(normal_file_path.c_str());
     std::ifstream face_file(face_file_path.c_str());
 
-    bug("created ifstreams");
     LoadVertices(vertex_file);
     LoadTexels(texel_file);
     LoadNormals(normal_file);
@@ -118,19 +120,15 @@ void ObjGl::LoadObject(std::string &file_name){
     texel_file.close();
     normal_file.close();
     face_file.close();
-    
-    bug("closed the files");
 
     SetVtData();
 }
-
 
 void ObjGl::LoadVertices(std::ifstream &vertex_file)
 {
     std::string line;
     std::vector<std::string> temp;
     int count = 0;
-    bug("loading vertices");
     while(getline(vertex_file, line))
     {
         temp = Split(line, ' ');
@@ -140,7 +138,6 @@ void ObjGl::LoadVertices(std::ifstream &vertex_file)
         }
         count++;
     } 
-    bug("finished loading vertices");
 }
 
 void ObjGl::LoadTexels(std::ifstream &texel_file)
@@ -214,21 +211,13 @@ std::vector<std::string> ObjGl::Split(const std::string &input, const char &spli
 
 void ObjGl::SetVtData()
 {
-    bug("setting vt data");
     for(int i = 0; i < (vertices_size / 3); i++)
     {   
-        bug("iterating through the array");
         float v_x = muse.vertices[(i * 3)];
-        bug("one");
         float v_y = muse.vertices[(i * 3) + 1];
-        bug("two");
         float v_z = muse.vertices[(i * 3) + 2];
-        bug("three");
-        float t_u = muse.texels[((vt_map.find(i)->second) * 3)];
-        bug("four");
-        float t_v = muse.texels[((vt_map.find(i)->second) * 3) + 1];
-
-        bug("finished getting vvvtt");
+        float t_u = muse.texels[((vt_map.find(i)->second) * 2)];
+        float t_v = muse.texels[((vt_map.find(i)->second) * 2) + 1];
         vt_data.push_back(std::make_tuple(
             v_x, v_y, v_z,
             t_u, t_v
@@ -239,4 +228,24 @@ void ObjGl::SetVtData()
 VectorTuple5f* ObjGl::GetVtData()
 {
     return &vt_data;
+}
+
+float* ObjGl::GetMuseVertices()
+{
+    return &muse.vertices;
+}
+
+float* ObjGl::GetMuseTexels()
+{
+    return &muse.texels;
+}
+
+float* ObjGl::GetMuseNormals()
+{
+    return &muse.normals;
+}
+
+unsigned int* ObjGl::GetMuseFaces()
+{
+    return &muse.faces;
 }
