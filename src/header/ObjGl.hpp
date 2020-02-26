@@ -35,7 +35,7 @@ class ObjGl
     public:
 
         ObjGl();
-        ObjGl(std::string &file_name)
+        ObjGl(std::string &file_name);
         ~ObjGl();
         float* GetMuseVertices();
         float* GetMuseTexels();
@@ -232,20 +232,20 @@ VectorTuple5f* ObjGl::GetVtData()
 
 float* ObjGl::GetMuseVertices()
 {
-    return &muse.vertices;
+    return muse.vertices;
 }
 
 float* ObjGl::GetMuseTexels()
 {
-    return &muse.texels;
+    return muse.texels;
 }
 
 float* ObjGl::GetMuseNormals()
 {
-    return &muse.normals;
+    return muse.normals;
 }
 
 unsigned int* ObjGl::GetMuseFaces()
 {
-    return &muse.faces;
+    return muse.faces;
 }
