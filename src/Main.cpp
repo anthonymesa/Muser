@@ -35,6 +35,8 @@
 #include <stdexcept>
 #include <string>
 #include <filesystem>
+#include <cmath>
+#include <vector>
 
 screenDimensions screen_dimensions;
 
@@ -84,19 +86,11 @@ int main(void)
 
     Muse new_object;
 
-    //Vertex input
-    float vertices[] = {
-         0.5f,  0.5f,  0.0f,  // top right
-         0.5f, -0.5f,  0.0f,  // bottom right
-        -0.5f, -0.5f,  0.0f,  // bottom left
-        -0.5f,  0.5f,  0.0f   // top left 
-    };
-    unsigned int indices[] = {  // note that we start from 0!
-        0, 1, 3,   // first triangle
-        1, 2, 3    // second triangle
-    };
+    new_object.RenderToSpectrogram("fuck");
+    new_object.RenderToAudio("bitch");
 
     //Create Vertex Attribute Array
+
     GLuint VAO;
     glGenVertexArrays(1, &VAO);  
     glBindVertexArray(VAO);
@@ -105,16 +99,18 @@ int main(void)
     GLuint VBO;
     glGenBuffers(1, &VBO);
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, 294918*2*sizeof(float), new_object.GetVertexAttributes(), GL_STATIC_DRAW);
 
     GLuint EBO;
     glGenBuffers(1, &EBO);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, 589824*sizeof(unsigned int), new_object.GetElements(), GL_STATIC_DRAW);
 
     //Create vertex attributes for vertex data at location 0
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE,  6 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE,  6 * sizeof(float), (void*)(3 * sizeof(float)));
+    glEnableVertexAttribArray(1);
     glBindVertexArray(0);
 
     Shader* default_shader = new Shader("data/shaders/vertex.shader", "data/shaders/fragment.shader");
@@ -123,13 +119,20 @@ int main(void)
     while(!glfwWindowShouldClose(splashWindow))
     {
         ProcessInput(splashWindow);
+        glEnable(GL_DEPTH_TEST);
+        glDepthFunc(GL_LESS); 
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT);
+        glClear(GL_COLOR_BUFFER_BIT| GL_DEPTH_BUFFER_BIT);
+
+
+        default_shader->SetFloat("yPos", 1.5*glfwGetTime());
+        default_shader->SetFloat("width", screen_dimensions.session_screen_width);
+        default_shader->SetFloat("height", screen_dimensions.session_screen_height);
+
 
         default_shader->Use();
         glBindVertexArray(VAO);
-        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-        glBindVertexArray(0);
+        glDrawElements(GL_TRIANGLES, 589824, GL_UNSIGNED_INT, reinterpret_cast<void*>(0));
 
         glfwSwapBuffers(splashWindow);
         glfwPollEvents();

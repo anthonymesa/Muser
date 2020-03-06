@@ -25,7 +25,7 @@ public:
 
     void ImportFromObj(const char* model);
     void ExportToObj();
-    void RenderToSpectrogram(std::string &filename);
+    void RenderToSpectrogram(std::string &&filename);
     int RenderToAudio(const char *filename);
 
     void SetSampleRate(const int &value);
@@ -33,9 +33,13 @@ public:
     void SetLengthInSamples(const int &value);
     void SetSpectrogramSize(const int &value);
 
+    float* GetVertices();
+    float *GetVertexAttributes();
+    unsigned int* GetElements();
+
 private:
     
-    ObjGl loaded_object;
+    ObjGl loaded_object{};
     int spectrogram_size = 1000;
     unsigned char** spectrogram;
     int arrayX, arrayY;
@@ -93,7 +97,7 @@ void Muse::ExportToObj()
 }
 
 //====================================================
-void Muse::RenderToSpectrogram(std::string &filename)
+void Muse::RenderToSpectrogram(std::string &&filename)
 {
     filename = ("temp/" + filename + ".ppm"); 
     int file_length = filename.length() + 1;
@@ -301,4 +305,16 @@ double Muse::CalculateSampleAtRow(const int &row, const int &sample_index)
 bool Muse::ElementHasValue(const int &row, const int &sample_index)
 {
     return ((spectrogram[row][sample_index/(numSamplesPerChannel/spectrogram_size)] == '\0') ? false : true );
+}
+
+float* Muse::GetVertices(){
+    return loaded_object.GetMuseVertices();
+}
+
+float *Muse::GetVertexAttributes() {
+    return loaded_object.GetVnData();
+}
+
+unsigned int* Muse::GetElements(){
+    return loaded_object.GetMuseFaces();
 }
