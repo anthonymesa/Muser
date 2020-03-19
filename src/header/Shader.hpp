@@ -9,7 +9,8 @@
  */
 
 #ifndef SHADER_H
-#define SHADER_H
+    #define SHADER_H
+#endif
 
 #ifdef _WIN32 || _WIN64
 	#include <glad/glad.h>
@@ -23,19 +24,19 @@
 
 class Shader
 {
-public:
+    public:
 
-    GLuint ID;
+        GLuint ID;
 
-    Shader(const char* vertexPath, const char* fragmentPath);
-    void Use();
-    void SetBool(const std::string &name, bool value) const;  
-    void SetInt(const std::string &name, int value) const;   
-    void SetFloat(const std::string &name, float value) const;
+        Shader(const char* vertexPath, const char* fragmentPath);
+        void Use();
+        void SetBool(const std::string &name, bool value) const;  
+        void SetInt(const std::string &name, int value) const;   
+        void SetFloat(const std::string &name, float value) const;
 
-private:
+    private:
 
-    void CheckCompileErrors(GLuint shader, std::string type);
+        void CheckCompileErrors(GLuint shader, std::string type);
 };
 
 Shader::Shader(const char* vertex_path, const char* fragment_path)
@@ -135,7 +136,6 @@ void Shader::CheckCompileErrors(GLuint shader, std::string type)
     }
 }
 
-#endif
 
 
 
