@@ -86,8 +86,8 @@ int main(void)
 
     Muse new_object;
 
-    new_object.RenderToSpectrogram("fuck");
-    new_object.RenderToAudio("bitch");
+    //new_object.RenderToSpectrogram("fuck");
+    //new_object.RenderToAudio("bitch");
 
     //Create Vertex Attribute Array
 
