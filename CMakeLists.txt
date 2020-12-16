@@ -1,3 +1,5 @@
+# Author: Anthony Mesa
+
 cmake_minimum_required(VERSION 3.16.0)
 
 # Set application name
