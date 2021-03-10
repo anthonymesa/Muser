@@ -33,6 +33,7 @@ public:
 	static void CleanUp();
 	static void RenderToAudio(unsigned int muse_index);
 	static void RenderToImage(unsigned int muse_index, int x, int y);
+	static void Remove(std::string muse_name);
 
 private:
 

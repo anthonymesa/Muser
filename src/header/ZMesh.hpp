@@ -42,6 +42,7 @@ private:
 
     static Mantis* zmesh_log;
     static Mantis* algo_log;
+    static Mantis* time_log;
 
     static void GenerateMesh();
     static void PopulateZMeshPoint(const int &texel_index);
@@ -83,18 +84,20 @@ unsigned int ZMesh::current_object_index;
 
 Mantis* ZMesh::zmesh_log = new Mantis("zmesh_log");
 Mantis* ZMesh::algo_log = new Mantis("algorithm_log");
+Mantis* ZMesh::time_log = new Mantis("zmesh_runtime_log");
 
 //ATTENTION: currently this returns void, but it needs to return a float pointer at some point
 //This is because I want to keep this class from directly accessing and editing the audio buffer.
 void ZMesh::InterpolateMuseSurfaceData(const unsigned int& object_index)
 {
+    time_log->TimeLog("Interpolating surface data");
     ZMesh::current_object_index = object_index;
     zmesh_log->Log("Current mesh index: " + std::to_string(ZMesh::current_object_index));
+    time_log->TimeLog("Generating mesh");
     ZMesh::GenerateMesh();
     zmesh_log->Log("Mesh Generated...");
-
-    //float* mesh_buffer = new float[AudioHandler::BUFFER_HEIGHT * AudioHandler::BUFFER_WIDTH];
-
+    time_log->TimeLog("Mesh generated");
+    
     algo_log->Log("Beginning algorithm...");
     algo_log->Log("Length of mesh buffer: ");
     algo_log->Log(AudioHandler::BUFFER_HEIGHT * AudioHandler::BUFFER_WIDTH);
@@ -173,12 +176,13 @@ void ZMesh::InterpolateMuseSurfaceData(const unsigned int& object_index)
             }
         }
     }
-
+    time_log->TimeLog("deleting heap variables");
     delete zmesh_log;
     delete algo_log;
 
     delete z_mesh_point_temp;
     delete z_mesh;
+    time_log->TimeLog("finished interpolating surface data");
 }
 
 //ATTENTION: this function will need to change name/etc to reflect audio buffer usage
