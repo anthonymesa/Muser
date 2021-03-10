@@ -22,8 +22,6 @@ int main(int argc, char *argv[])
 
 	std::cout << "Welcome to Muser:" << std::endl;
 
-	std::vector<unsigned int> muse_list;
-
 	while(PROGRAM_SHOULD_RUN){
 		std::string input;
 		std::cout << "~ ";
@@ -35,7 +33,8 @@ int main(int argc, char *argv[])
 		{
 			if(command.size() == 2)
 			{
-				muse_list.push_back(MuseHandler::NewMuse(command[1].c_str()));
+				unsigned int new_muse_index = MuseHandler::NewMuse(command[1].c_str());
+				std::cout << "muse created - " << new_muse_index << std::endl;
 			}
 		}
 		else if (command[0].compare("rtoi") == 0)
@@ -45,11 +44,11 @@ int main(int argc, char *argv[])
 				MuseHandler::RenderToImage(stoi(command[1]), stoi(command[2]), stoi(command[3]));
 			}
 		}
-		else if (command[0].compare("clean") == 0)
+		else if (command[0].compare("rm") == 0)
 		{
-			if(command.size() == 1)
-			{
-				MuseHandler::CleanUp();
+			if(command.size() == 2)
+			{	
+				std::cout << "function not ready yet" << std::endl;
 			}
 		}
 		else if (command[0].compare("exit") == 0){
@@ -67,7 +66,7 @@ int main(int argc, char *argv[])
  * 		-m, --mantis: display mantis
  */
 void SetOptions(int argc, char *argv[]){
-	while(argc != 0){
+	while(argc > 0){
 
 		/* Runs mantis debugger using specified
 		 * logs folder

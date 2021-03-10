@@ -8,23 +8,27 @@
 #include <typeinfo>
 #include <filesystem>
 #include <iterator>
+#include <chrono>
+#include <ctime>
 
 class Mantis{
 public:
 
 	Mantis(std::string name);
 	
-	template<typename T> void Log(T const input);
-	template<typename T> std::ostringstream Print(T const input);
-
 	static void Init(char argv[]);
-	static void Clean();
+	template<typename T> void Log(T const input);
+	template<typename T> void TimeLog(T const input);
 
 private:
+
+	static void Clean();
+	template<typename T> std::ostringstream Print(T const input);
 
 	static std::string MANTIS_LOGS_FOLDER;
 	std::string name;
 	std::ofstream log_file;
+	static bool SHOULD_RUN;
 };
 
 typedef std::vector<int> vec_i;
@@ -36,6 +40,7 @@ typedef std::tuple<float, float, float> tup_fff;
 typedef std::vector<std::vector<unsigned int>> vec_vec_ui;
 typedef std::set<std::tuple<int, int>> set_tup_ii;
 std::string Mantis::MANTIS_LOGS_FOLDER = "";
+bool Mantis::SHOULD_RUN = false;
 
 Mantis::Mantis(std::string name)
 {
@@ -48,6 +53,7 @@ void Mantis::Init(char argv[])
 	std::string temp_path(std::filesystem::current_path());
 	MANTIS_LOGS_FOLDER = temp_path.append(temp_arg);
 	Mantis::Clean();
+	SHOULD_RUN = true;
 }
 
 void Mantis::Clean()
@@ -142,13 +148,29 @@ template<typename T> std::ostringstream Mantis::Print(T const input)
 	return oss;
 }
 
-//ATTENTION: upon retrospect, I may not even need overloading...
 template<typename T> void Mantis::Log(T const input)
 {
-	std::string filename_string = (MANTIS_LOGS_FOLDER + "/" + name + ".txt");
-	char* filename_char = const_cast<char*>(filename_string.c_str());
-	log_file.open(filename_char, std::ofstream::out | std::ofstream::app);
+	if(SHOULD_RUN)
+	{
+		std::string filename_string = (MANTIS_LOGS_FOLDER + "/" + name + ".txt");
+		char* filename_char = const_cast<char*>(filename_string.c_str());
+		log_file.open(filename_char, std::ofstream::out | std::ofstream::app);
 
-	log_file << Mantis::Print(input).str() << std::endl;
-	log_file.close();
+		log_file << Mantis::Print(input).str() << std::endl;
+		log_file.close();
+	}
+}
+
+template<typename T> void Mantis::TimeLog(T const input)
+{
+	if(SHOULD_RUN)
+	{
+		std::string filename_string = (MANTIS_LOGS_FOLDER + "/" + name + ".txt");
+		char* filename_char = const_cast<char*>(filename_string.c_str());
+		log_file.open(filename_char, std::ofstream::out | std::ofstream::app);
+		auto clock = std::chrono::system_clock::now();
+    	std::time_t log_time = std::chrono::system_clock::to_time_t(clock);
+		log_file << std::ctime(&log_time) << " | " << Mantis::Print(input).str() << std::endl;
+		log_file.close();
+	}
 }

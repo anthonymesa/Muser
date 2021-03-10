@@ -79,8 +79,8 @@ Mantis* ObjectHandler::object_log = new Mantis("object_log");
 std::string ObjectHandler::DEFAULT_OBJ = "test_file_high_res";
 
 unsigned int ObjectHandler::NewObject()
-{
-	SetMinMaxVertexMagnitude();
+{	
+ 	SetMinMaxVertexMagnitude();
 	SetVertexMagnitudeDifference();
 	WriteDefaultFileToObject();
 
@@ -91,7 +91,7 @@ unsigned int ObjectHandler::NewObject()
 }
 
 void ObjectHandler::WriteDefaultFileToObject()
-{
+{	
 	std::string temp_path(std::filesystem::current_path());
 	std::string file_name = temp_path.append("/data/" + DEFAULT_OBJ + ".obj");
 	std::ifstream file(file_name.c_str());
