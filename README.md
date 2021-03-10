@@ -1,6 +1,6 @@
 # Intent
 
-Muser is a windows software that converts 3D shape into sound via .Wav file format (or in app playback). The end goal for this application is to provide a means of 'tactile sound synthesis' via 3D sculpting.
+Muser is a Linux/Windows software that converts 3D shape into sound via .Wav file format (or in app playback). The end goal for this application is to provide a means of 'tactile sound synthesis' via 3D sculpting.
 
 Currently, I am going through a refactoring for this project to switch it over to Visual Studio, where before I was editing CMakeList.txt and compiling this program by hand (that was the original driving factor behind creating the abandoned project 'ControlFreek' in my repository).
 
