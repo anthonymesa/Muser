@@ -53,11 +53,11 @@ void Mantis::Init(char argv[])
 void Mantis::Clean()
 {
 	std::filesystem::path dir = MANTIS_LOGS_FOLDER;
-	for (const auto& entry : std::filesystem::directory_iterator(dir))
+	for (const auto& entry : std::filesystem::directory_iterator(dir)){
 		if (entry != dir) {
 			std::filesystem::remove_all(entry.path());
 		}
-
+	}
 	//int success = std::filesystem::remove_all(dir);
 	//std::cout << success << std::endl;
 }
