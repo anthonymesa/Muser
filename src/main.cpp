@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
  * Sets running options
  *
  * Options:
- * 		-m, --mantis: display mantis
+ * 		-m, --mantis: display mantis output
  */
 void SetOptions(int argc, char *argv[]){
 	while(argc != 0){
